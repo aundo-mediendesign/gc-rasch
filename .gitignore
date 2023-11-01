@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+.env
+resources/dist
+docker/nginx/certs
+docker/nginx/logs
+**/ShortpixelBackups/*
+public/*
+!public/wp-content/
+public/wp-content/*
+!public/wp-content/mu-plugins/
+!public/wp-content/plugins/
+public/wp-content/plugins/*
+!public/wp-content/plugins/advanced-custom-fields-pro
+*.map

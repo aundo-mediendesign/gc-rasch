@@ -1,0 +1,40 @@
+// .aligncenter,
+.has-text-align-center
+    text-align: center
+// .alignright,
+.has-text-align-right
+    text-align: right
+    
+body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+    max-width: none
+
+body .is-layout-flex
+    align-items: unset
+
+.is-vertically-aligned-center
+  display: flex
+  align-items: center
+
+// Buttons
+// .wp-block-button,
+.wp-block-image
+    width: 100%
+.aligncenter.wp-block-button,
+.aligncenter img
+    margin-left: auto
+    margin-right: auto
+.alignright.wp-block-button,
+.alignright img
+    margin-left: auto
+
+@media (max-width: 781px)
+    .wp-block-columns
+        flex-direction: column
+
+@media (min-width: 782px)
+    .wp-block-columns:not(.is-not-stacked-on-mobile)
+        display: flex
+
+        >.wp-block-column
+            flex-basis: 0
+            flex-grow: 1

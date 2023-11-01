@@ -1,0 +1,61 @@
+@font-face 
+    font-family: "Arial"
+    font-display: swap
+    // src: url('/wp-content/themes/aundo/fonts/Arial.woff2') format('woff2'), url('/wp-content/themes/aundo/fonts/RusticaRegularVariable.woff') format('woff')
+
+.customStyles
+    @import _fonts
+    .fontPrev
+        font-size: 13px !important
+
+    .font-hero
+        margin: 0
+
+#editor 
+    .edit-post-visual-editor .editor-styles-wrapper
+        --xtrasmallMargin: .5rem
+        --smallMargin: 2rem
+        --mediumMargin: 2.6rem
+        --bigMargin: 5rem
+        --xtrabigMargin: 6.25rem
+        --columnGap: 1rem
+        --columnMargin: 1rem
+        --sidePadding: 1rem
+        @import _fonts
+        @import _margins
+
+        .edit,
+        button 
+            font-weight: 300
+        .edit > p 
+            margin-bottom: 0.2rem !important
+       
+        .is-root-container > *:not(.window),
+        h1
+            max-width: 1200px !important
+            margin-left: auto
+            margin-right: auto
+
+        figure
+            padding: 0 !important
+
+        p
+            line-height: 1.2  
+
+        a
+            color: rgb(24, 227, 152)
+
+        input
+            font-size: 1rem !important
+        .font-boldBig
+            font-size: calc(var(--fontSize) * .9)
+        .font-base
+            font-size: calc(var(--fontSize) * .9)
+        .font-hero
+            font-size: calc(var(--fontSize) * .5)
+
+        .single-content p:not([class*=font-])
+            font-size: 1.3rem
+
+        .single-content > h2:first-child
+            margin-bottom: var(--bigMargin)

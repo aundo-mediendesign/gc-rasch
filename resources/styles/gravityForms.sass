@@ -1,0 +1,121 @@
+#body .gform_fields
+    gap: calc(var(--columnGap) / 2)
+    display: grid
+    grid-template-columns: 50% 50%
+
+    .gfield--width-full 
+        grid-column: 1 / span 2
+
+.gform_footer
+    position: relative
+    min-width: 300px
+    min-height: 1rem
+    cursor: pointer
+
+    input[type="submit"]
+        background-color: transparent
+        border: none
+        color: inherit
+        position: absolute
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        padding: 0
+
+input:not([type="submit"])
+    border-radius: .5rem
+textarea
+    border-radius: .5rem
+
+fieldset
+    padding: 0
+
+input:not([type="submit"]),
+textarea
+    border: 1px solid var(--schwarz)
+    padding-left: calc(var(--fontSize) * 1.5)
+    padding-right: calc(var(--fontSize) * 1.5)
+    width: 100%
+
+input:not([type="submit"]),
+textarea
+    padding-top: var(--fontSize) 
+    padding-bottom: var(--fontSize)
+
+.gform_submission_error
+    color: var(--gold)
+.gform_footer
+    margin-top: 1rem
+
+.gform_wrapper .gfield_required
+    color: var(--lilaDunkel)
+
+.gfield
+    > label
+        display: none
+
+.gform_required_legend
+    display: none
+
+.ginput_container_consent
+    display: flex
+    margin-bottom: 1rem
+
+    input
+        width: 1rem
+        height: 1rem
+
+    label
+        padding-left: 0.5rem
+    
+.validation_message,
+.gform_confirmation_message
+    color: var(--gold)
+    margin-top: .5rem
+
+.gform_validation_errors 
+    margin-bottom: var(--smallMargin)
+
+.gform_validation_container, .gform_wrapper.gravity-theme .gform_validation_container, body .gform_wrapper.gravity-theme .gform_body .gform_fields .gfield.gform_validation_container, body .gform_wrapper.gravity-theme .gform_fields .gfield.gform_validation_container, body .gform_wrapper.gravity-theme .gform_validation_container 
+    display: none!important
+    left: -9000px
+    position: absolute!important
+
+.gform_wrapper.gravity-theme fieldset
+    border: none
+    display: block
+
+legend
+    display: none
+
+.ginput_container_consent
+    position: relative
+    > input
+        display: none
+
+        &:checked
+            + label 
+                &::before
+                    background-color: black
+        + label 
+            padding-left: 0
+                
+            &::before
+                content: ""
+                width: calc(var(--fontSize) / 2)
+                height: calc(var(--fontSize) / 2)
+                display: inline-block
+                margin-right: .5rem
+                background-color: white
+                // position: absolute
+                // left: 1rem
+                text-align: center
+                line-height: 1
+                color: black
+                border: 1px solid black
+
+    
+
+
+    

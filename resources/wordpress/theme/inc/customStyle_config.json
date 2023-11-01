@@ -1,0 +1,164 @@
+{   
+    "mt": {
+        "headline": "Abstand oben",
+        "types": {
+            "0": {
+                "class": "none",
+                "name": "Aus"
+            },
+            "1": {
+                "class": "fontMarginHalf",
+                "name": "halbe Schrifthöhe"
+            },
+            "2": {
+                "class": "fontMargin",
+                "name": "Schrifthöhe"
+            },
+            "3": {
+                "class": "xtrasmallMargin",
+                "name": "Sehr klein"
+            },
+            "4": {
+                "class": "smallMargin",
+                "name": "Klein"
+            },
+            "5": {
+                "class": "mediumMargin",
+                "name": "Mittel"
+            },
+            "6": {
+                "class": "bigMargin",
+                "name": "Groß"
+            },
+            "7": {
+                "class": "xtrabigMargin",
+                "name": "Sehr groß"
+            },
+            "8": {
+                "class": "columnMargin",
+                "name": "Spaltenabstand"
+            },
+            "9": {
+                "class": "other",
+                "name": "Andere"
+            }
+        }
+    },
+    "mb": {
+        "headline": "Abstand unten",
+        "types": {
+            "0": {
+                "class": "none",
+                "name": "Aus"
+            },
+            "1": {
+                "class": "fontMarginHalf",
+                "name": "halbe Schrifthöhe"
+            },
+            "2": {
+                "class": "fontMargin",
+                "name": "Schrifthöhe"
+            },
+            "3": {
+                "class": "xtrasmallMargin",
+                "name": "Sehr klein"
+            },
+            "4": {
+                "class": "smallMargin",
+                "name": "Klein"
+            },
+            "5": {
+                "class": "mediumMargin",
+                "name": "Mittel"
+            },
+            "6": {
+                "class": "bigMargin",
+                "name": "Groß"
+            },
+            "7": {
+                "class": "xtrabigMargin",
+                "name": "Sehr groß"
+            },
+            "8": {
+                "class": "columnMargin",
+                "name": "Spaltenabstand"
+            },
+            "9": {
+                "class": "other",
+                "name": "Andere"
+            }
+        }
+    },
+    "font": {
+        "headline": "Schrift",
+        "types": {
+            "0": {
+                "class": "hero"
+            },
+            "1": {
+                "class": "mediumBold"
+            },
+            "2" : {
+                "class": "mediumItalic"
+            },
+            "3" : {
+                "class": "mediumBoldUppercase"
+            },
+            "4" : {
+                "class": "mediumLight"
+            },
+            "5" : {
+                "class": "mediumRegular"
+            },
+            "6" : {
+                "class": "baseItalic"
+            },
+            "7" : {
+                "class": "base"
+            },
+            "8" : {
+                "class": "baseStrong"
+            },
+            "9" : {
+                "class": "smallLight"
+            },
+            "10" : {
+                "class": "smallBold"
+            },
+            "11" : {
+                "class": "uppercase_regular"
+            },
+            "12" : {
+                "class": "uppercase_bold"
+            },
+            "13" : {
+                "class": "boldBig"
+            },
+            "14": {
+                "class": "other",
+                "name": "Andere"
+            }
+        }   
+    },
+    "ebene": {
+        "headline": "Ebene",
+        "types": {
+            "0": {
+                "class": "0",
+                "name": "Background"
+            },
+            "1": {
+                "class": "1"
+            },
+            "2": {
+                "class": "2"
+            },
+            "3": {
+                "class": "3"
+            },
+            "4": {
+                "class": "4"
+            }
+        }   
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "wordpress",
+  "version": "1.0.0",
+  "description": "wp development",
+  "scripts": {
+    "start": "wp-scripts start resources/scripts --output-path=public/wp-content/themes/aundo/build",
+    "build": "wp-scripts build resources/scripts --output-path=public/wp-content/themes/aundo/build",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "generate-favicon": "gulp favicon",
+    "wp-install-theme-parent": "gulp wp-install-theme-parent",
+    "wp-download-plugins": "gulp wp-download-plugins",
+    "docker-start": "cd docker/scripts && sh docker-start.sh",
+    "docker-start-all": "cd docker/scripts && sh docker-start.sh all",
+    "docker-stop": "cd docker/scripts && sh docker-stop.sh",
+    "docker-db-import": "cd docker/scripts && sh db_import.sh",
+    "docker-db-export": "cd docker/scripts && sh db_export.sh",
+    "docker-db-export-replace-url": "cd docker/scripts && sh db_export-replace-url.sh www.domo-moebel.de"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^24.3.0",
+    "browser-sync": "^2.27.10",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "favicons": "^6.1.0",
+    "gulp": "^4.0.2",
+    "laravel-mix": "^6.0.41",
+    "node-sass": "^7.0.3",
+    "normalize.css": "^8.0.1",
+    "popper.js": "^1.16.1",
+    "postcss-apply": "^0.12.0",
+    "postcss-discard-comments": "^5.1.2",
+    "postcss-import": "^15.0.0",
+    "postcss-preset-env": "^7.8.2",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "react-intersection-observer": "^9.4.3",
+    "react-use-scroll-direction": "^0.1.0"
+  }
+}

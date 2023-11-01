@@ -1,0 +1,156 @@
+.header
+    &[data-status="open"]
+        .navigation
+            opacity: 1
+            transform: none
+
+    &[data-status="closed"]
+        .navigation
+            pointer-events: none
+
+// .sub-menu > li,
+.navigation li
+    color: var(--weiss)
+    transition: .3s color ease
+    will-change: color, border-color
+
+    &:hover
+        color: cyan
+        border-color: cyan
+
+.navigation
+    position: fixed
+    left: 0
+    top: 0
+    width: var(--viewportWidth)
+    height: var(--windowHeight)
+    background: var(--schwarz)
+    overflow-y: auto
+    padding-top: calc(var(--headerheight) + var(--smallMargin))
+    transition: .5s opacity ease, .5s transform ease
+    will-change: opacity, transform
+    opacity: 0
+    transform: translateX(-200px)
+    box-sizing: border-box
+
+    .menu li
+        list-style-type: none
+        margin-top: 0
+        margin-bottom: 0
+
+
+    .menu-item-has-children > a
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        pointer-events: none
+        cursor: default
+        line-height: 1
+
+    .openIcon        
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        height: 1.25rem
+        margin-left: 1.25rem
+
+        span
+            width: 1.25rem
+            display: block
+            border-bottom: 5px solid
+            will-change: opacity, color, border-color
+            transition: .3s opacity ease
+
+            &:last-child
+                position: absolute
+                transform: rotate(90deg)
+
+    // .link
+    //     cursor: pointer
+
+    .menu-item-has-children
+        position: relative
+
+        &[data-status="closed"]
+            .sub-menu
+                pointer-events: none
+                opacity: 0
+
+        &[data-status="open"]
+            .openIcon span
+                &:last-child
+                    opacity: 0
+
+            .sub-menu
+                transform: translateY(0%)
+
+        // &:hover
+        //     > a span
+        //         color: cyan
+        //         border-color: cyan
+
+    .menu li:not(.menu-item-has-children)::after
+        content: ""
+
+    .sub-menu,
+    .menu > li:not(.menu-item-has-children)::after
+        min-height: calc(var(--fontSize) * 1.5)
+        display: block
+
+    .sub-menu
+        padding: 0
+        will-change: transform, opacity
+        transition: .3s transform ease, .3s opacity ease
+        a
+            margin-right: var(--fontSize)
+
+        
+
+@media only screen and (min-width: 820px)
+    .navigation
+        .menu-item-has-children
+            &[data-status="closed"]
+                .sub-menu
+                    transform: translateX(-100%)
+
+        .sub-menu
+            display: flex
+            align-items: center
+
+@media only screen and (max-width: 819px)
+    .navigation
+        padding-bottom: calc(var(--headerheight) + var(--smallMargin))
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+
+        .menu-item-has-children
+            &[data-status="closed"]
+                .sub-menu
+                    max-height: 0
+                    transform: translateY(-100%)
+
+                    a
+                        pointer-events: none
+                    
+        > div
+            margin-top: var(--smallMargin)
+            margin-bottom: var(--smallMargin)
+
+        .menu-main-container
+            max-height: 100%
+            overflow: auto
+        .sub-menu
+            box-sizing: border-box
+            padding-top: 1rem
+            padding-bottom: 1rem
+            a
+                padding-top: 1rem
+                padding-bottom: 1rem
+                margin-top: .5rem
+                margin-bottom: .5rem
+                display: block
+
+            span
+                display: block
+                min-height: 36px

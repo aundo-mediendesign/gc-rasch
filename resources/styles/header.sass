@@ -1,0 +1,114 @@
+@import BurgerIcon
+@import Navigation
+
+$headerheight: clamp(60px, 12vh, 90px)
+
+html[data-ready="true"] .header 
+    will-change: top, bottom, background-color
+    transition: 1s top ease, 1s bottom ease, 1s background-color ease
+
+    .logo
+        transition: .3s transform ease
+        transform-origin: top center
+        will-change: transform
+
+.header
+    position: fixed
+    height: $headerheight
+    background-color: var(--schwarz)
+    color:  var(--weiss)
+    z-index: 9999
+        
+    &[data-status="open"]
+        path
+            fill: var(--weiss)
+        
+        .logo
+            transform: scale(1.5)
+    
+        .hideIfOpen
+            display: none
+
+    &[data-status="closed"]
+        .showIfOpen
+            display: none
+        .navigation
+            opacity: 0
+            transform: translateX(10%)
+        
+        path
+            fill: var(--weiss)
+
+    svg
+        cursor: pointer
+        width: auto
+        max-width: fit-content
+
+@media only screen and (min-width: 950px)
+    .header
+        top: 0
+        --iconColor: var(--weiss)
+        
+        .mobile
+            display: none
+
+        > .flex
+            > *:not(:first-child)
+                margin-left: 2rem        
+
+        &.visible,
+        &.ontop
+            top: 0
+
+        &.hidden
+            top: -11%
+
+    #mainHead
+        height: var(--headerheight)
+
+@media only screen and (max-width: 949px)
+    .header
+        --iconColor: var(--weiss)      
+
+        .desktop
+            display: none
+        &.visible,  
+        &.ontop
+            bottom: 0
+
+        &.hidden
+            bottom: -11%
+
+        &[data-status="open"]
+            --iconColor: var(--weiss)
+
+        > .flex
+            &:last-child
+                justify-content: space-between
+                position: absolute
+                width: calc(100% - var(--sidePadding) * 2)
+
+            &:not(:last-child)
+                margin-left: auto
+                margin-right: auto
+                
+                > *:not(:first-child)
+                    margin-left: 2rem    
+
+        .mobileTop
+            position: relative
+
+        &:not([data-status="open"])
+            .logo
+                margin-left: auto
+                margin-right: auto
+
+        &[data-status="open"]
+            .mobileTop
+                position: fixed
+                top: 0
+                left: 0
+                padding-right: var(--smallMargin)
+                padding-left: var(--smallMargin)
+                width: 100%
+                height: var(--headerheight)

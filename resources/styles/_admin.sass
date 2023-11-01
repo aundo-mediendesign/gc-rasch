@@ -1,0 +1,249 @@
+@import _admin-defaults
+$green: rgb(24, 227, 152)
+
+// aundo.de
+.wp-block-create-block-aundo-slider.flex .block-editor-block-list__layout
+    display: flex
+    flex-wrap: wrap
+
+// .aundo-accordion .block-editor-block-list__layout,
+.grid6 .block-editor-block-list__layout
+    display: flex
+    flex-wrap: wrap
+
+#editor .wp-block-quote figure
+    display: flex
+    align-items: center
+    justify-content: center
+
+    img
+        border-radius: 100%
+
+// General
+.block-editor-block-inspector, 
+.block-editor-block-inspector>div
+    display: flex
+    flex-direction: column-reverse
+
+.block-editor-block-inspector__advanced > div 
+    flex-direction: column-reverse
+    display: flex
+
+.interface-interface-skeleton__content
+    z-index: 99999
+.is-root-container > .wp-block .wp-block
+    margin-left: 0
+    margin-right: 0
+    max-width: none
+.is-root-container > .wp-block
+    max-width: 1000px
+    margin-left: auto
+    margin-right: auto
+        
+.window
+    position: fixed
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: 9999
+    background: rgba(0,0,0,.8)
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    flex-direction: column
+    padding: 2rem
+    box-sizing: border-box
+    overflow: auto
+
+    .components-flex
+        flex-direction: row
+        justify-content: flex-start
+        align-items: center
+        grid-gap: 1rem
+    .components-radio-control__option, 
+    .components-radio-control__option label 
+        display: flex
+        align-items: center
+        gap: .2rem
+    
+    .components-checkbox-control__input:checked
+        background-color: $green 
+
+    .components-radio-control__input
+        display: none
+
+        &:checked + label
+            background-color: $green
+            fill: white
+
+    .components-radio-control__option 
+        label 
+            padding: .5rem
+            margin-top: 0 !important
+            margin-bottom: 0 !important
+
+    > *
+        background: #fff
+        padding: 1rem
+        width: 500px
+        max-width: 500px
+        min-width: fit-content
+
+div[data-title="Wiederverwendbarer Block"]
+    position: relative
+
+    &:not(.has-child-selected)
+        &:after
+            content: "Wiederverwendbarer Block" !important
+            width: 100%
+            height: 100%
+            background: rgba(0,0,0,.5)
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 1
+            color: $green
+            font-weight: bold
+
+.components-placeholder.components-placeholder
+    width: auto
+
+.parent-aundo
+    position: relative
+    border: 1px dotted lightgrey
+    min-height: 2.4rem
+    box-sizing: border-box
+    padding-left: 1rem
+    padding-top: 1rem
+    padding-bottom: 1rem
+
+    .components-base-control__field 
+        margin-bottom: 0
+
+.kachel.wp-block-column
+    padding: 1rem
+    background-size: cover
+
+button
+    border-radius: 0
+    cursor: pointer
+    box-shadow: none
+    border: 1px solid black
+    background: white
+    padding: .5rem
+
+    &.active
+        background-color: $green
+    
+    &.save
+        padding: .5rem
+        width: 100%
+        margin-top: 2rem
+
+    &.edit
+        border: none
+
+        &:not(.editInline)
+            width: 100%
+            fill: $green
+            display: flex
+            align-items: center
+            justify-content: flex-end
+            gap: .5rem
+            background: transparent
+            color: currentcolor
+
+        &.editInline
+            display: flex
+            align-items: center
+            gap: 1rem
+
+            svg
+                background: $green
+                fill: #fff
+                padding: .5rem
+
+            &.open
+                background: $green
+                color: #fff
+
+.animate
+    &:not(.has-child-selected) > * 
+        > *:not(:first-child)
+            display: none
+
+        > *:first-child
+            br
+                display: none
+
+    &.has-child-selected > * 
+        > *:before
+            display: block
+            font-size: 12px
+            font-weight: bold
+
+        > *:nth-child(1):before
+            content: 'Animation 1'
+        > *:nth-child(2):before
+            content: 'Animation 2'
+        > *:nth-child(3):before
+            content: 'Animation 3'
+
+// This Plugin
+.aundo-bloecke-window,
+.aundo-icons-window,
+.aundo-backgroundPattern-window
+    input
+        display: none
+
+    input:checked + label
+        path
+            fill: $green
+
+.windowContent
+    > div > *
+        margin-bottom: 1rem
+
+.wp-block-gallery figure:nth-child(n+4) 
+    display: none !important
+
+.parent-aundo,
+.window
+    .components-checkbox-control .components-base-control__field
+        margin-bottom: 0
+        display: flex
+
+    .is-layout-flex
+        > label 
+            width: 30%
+    .showOnSelect
+        display: none
+
+    input[type="text"]
+        min-width: 300px
+    label
+        display: block
+    input[type="text"]
+        font-size: 1rem
+    label,
+    button
+        font-size: .8rem
+
+    .link
+        font-size: 12px 
+        text-decoration: underline
+        font-weight: bold
+        display: table
+        cursor: pointer
+
+.is-selected,
+.has-child-selected
+    .showOnSelect
+        display: block
+
+.is-root-container
+    &.wp-block-post-content .hero
+        font-size: 2rem
+        margin-left: 0
+        line-height: 1.2

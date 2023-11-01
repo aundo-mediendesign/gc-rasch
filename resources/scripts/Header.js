@@ -131,7 +131,7 @@ function Header() {
         openNav(e, "click");
     }
     function setInitialMenuState(parent) {
-        parent.querySelector("a").innerHTML = '<span class="openIcon"><span></span><span></span></span><span>' + parent.querySelector("a").innerHTML + '</span>';
+        parent.querySelector("a").innerHTML = '<span>' + parent.querySelector("a").innerHTML + '</span><svg class="openIcon" xmlns="http://www.w3.org/2000/svg" width="39.31" height="25.01" viewBox="0 0 39.31 25.01"><path d="m19.67,25.01L0,4.13,4.37.02l15.3,16.23L34.93,0l4.37,4.11-19.63,20.9Z"/></svg>';
         parent.dataset.status = "closed";
     }
     

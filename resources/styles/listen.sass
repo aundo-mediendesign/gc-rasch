@@ -1,0 +1,57 @@
+ul,
+ol
+    padding: 0
+    margin: 0
+    list-style-type: none
+
+.content ul,
+.content ol
+    &:not([class*="list-"]) li
+        padding-left: 20px
+        position: relative
+
+        &:before
+            position: absolute
+            left: 0
+
+.content ul 
+    &:not([class*="list-"])
+        li:before
+            content: '/'
+            color: var(--gelb)
+    
+    &.list-check li
+        fill: var(--orange)
+        display: flex
+
+        .check
+            display: flex
+            align-items: center
+            width: 25px
+            height: calc(var(--fontSize) * 1.5)
+
+        svg
+            width: 90%
+            height: auto
+        
+    li
+        &:first-child:not([class*="mt-"])
+            margin-top: calc(var(--fontSize) * .5)
+        &:last-child:not([class*="mb-"])
+            margin-bottom: calc(var(--fontSize) * .5)
+
+        &:before
+            font-weight: 900
+
+    ul
+        padding-left: 15%
+
+ol
+
+    li
+        counter-increment: li
+
+        &::before
+            content: counter(li) ". "
+            color: var(--orange)
+            font-weight: $fw_medium

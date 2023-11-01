@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/aundo-customstyles",
+  "version": "0.1.0",
+  "title": "Aundo-Custom-Styles",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "text": {
+      "type": "string",
+      "default": "Hello, world!"
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff0000"
+    },
+    "fontSize": {
+      "type": "number",
+      "default": 16
+    }
+  },
+  "textdomain": "aundo-customstyles",
+  "editorScript": "file:./index.js"
+}

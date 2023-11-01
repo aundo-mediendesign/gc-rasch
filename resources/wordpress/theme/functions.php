@@ -242,8 +242,10 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 // add_image_size( 'custom-size3', 320 );
 // add_image_size( 'custom-size4', 25 );
 
-// function fontspreload () {
-//     $url = home_url(); 
-//     echo '<link rel="preload" as="font" href="' . esc_url( $url ) . '/wp-content/themes/aundo/fonts/RusticaRegularVariable.woff2" type="font/woff2" crossorigin="anonymous">';
-// }
-// add_action('wp_head', 'fontspreload', 1);
+function fontspreload () {
+    $url = home_url(); 
+    echo '<link rel="preload" as="font" href="' . esc_url( $url ) . '/wp-content/themes/aundo/fonts/Raleway-Italic-VariableFont_wght.ttf" type="font/truetype" crossorigin="anonymous">';
+    echo '<link rel="preload" as="font" href="' . esc_url( $url ) . '/wp-content/themes/aundo/fonts/Raleway-VariableFont_wght.ttf" type="font/truetype" crossorigin="anonymous">';
+    echo '<link rel="preload" as="font" href="' . esc_url( $url ) . '/wp-content/themes/aundo/fonts/Akshar-VariableFont_wght.ttf" type="font/truetype" crossorigin="anonymous">';
+}
+add_action('wp_head', 'fontspreload', 1);

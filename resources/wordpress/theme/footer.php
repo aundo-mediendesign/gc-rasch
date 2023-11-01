@@ -12,38 +12,22 @@
  */
 
 ?>
-        <footer id="site-footer" class="footer-group sidePadding editMargin">
-            <div>
-                <?php 
-                    if ( is_active_sidebar( 'footer-widgets' ) ) :
-                        dynamic_sidebar( 'footer-widgets' );
-                    endif;
+    <footer id="site-footer" class="footer-group sidePadding editMargin">
+        <div>
+            <?php 
+                if ( is_active_sidebar( 'footer-widgets' ) ) :
+                    dynamic_sidebar( 'footer-widgets' );
+                endif;
+            ?>
+            <?php 
+                    wp_nav_menu( array(
+                        'menu' => 'Footer',                
+                        ) );
                 ?>
-                <?php 
-                $menuParameters = array(
-                    'menu' => 'Footer',
-                    'container'=> false,
-                    'echo'            => false, 
-                    'menu_class'=> false,
-                    'items_wrap'      => '%3$s',
-                    'depth'           => 0
-                );
-                    
-                // if ( is_active_sidebar( 'footer-socialicons' ) ) :
-                //     dynamic_sidebar( 'footer-socialicons' );
-                // endif;
-                // echo str_replace (
-                //     '<a' , '<a class="hide980" ' , 
-                //     strip_tags(
-                //         wp_nav_menu( $menuParameters ),
-                //     '<a>' ) 
-                // ); 
-              
-                ?>
-                <p class="footerAbbinder">© <?php echo date("Y"); ?> • a&o mediendesign GmbH</p>
-            </div>
-        </footer>
-
+           
+        </div>
+    </footer>
+                
     <?php wp_footer(); ?>
 
 

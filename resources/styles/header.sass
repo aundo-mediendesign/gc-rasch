@@ -1,43 +1,38 @@
 @import BurgerIcon
 @import Navigation
 
-$headerheight: clamp(60px, 12vh, 90px)
-
 html[data-ready="true"] .header 
     will-change: top, bottom, background-color
     transition: 1s top ease, 1s bottom ease, 1s background-color ease
 
+    .custom-logo-link,
     .logo
         transition: .3s transform ease
         transform-origin: top center
         will-change: transform
 
+.custom-logo-link 
+    display: flex
+
+.custom-logo-link img,
+.logo
+    height: calc(var(--headerheight) * .8)
+    max-height: 6.25rem
+    width: auto
+
 .header
     position: fixed
-    height: $headerheight
-    background-color: var(--schwarz)
-    color:  var(--weiss)
+    height: var(--headerheight)
     z-index: 9999
+    // &[data-status="closed"]
+    //     .showIfOpen
+    //         display: none
+    //     .navigation
+    //         opacity: 0
+    //         transform: translateX(10%)
         
-    &[data-status="open"]
-        path
-            fill: var(--weiss)
-        
-        .logo
-            transform: scale(1.5)
-    
-        .hideIfOpen
-            display: none
-
-    &[data-status="closed"]
-        .showIfOpen
-            display: none
-        .navigation
-            opacity: 0
-            transform: translateX(10%)
-        
-        path
-            fill: var(--weiss)
+    //     path
+    //         fill: var(--weiss)
 
     svg
         cursor: pointer
@@ -51,10 +46,6 @@ html[data-ready="true"] .header
         
         .mobile
             display: none
-
-        > .flex
-            > *:not(:first-child)
-                margin-left: 2rem        
 
         &.visible,
         &.ontop
@@ -99,6 +90,7 @@ html[data-ready="true"] .header
             position: relative
 
         &:not([data-status="open"])
+            .custom-logo-link,
             .logo
                 margin-left: auto
                 margin-right: auto

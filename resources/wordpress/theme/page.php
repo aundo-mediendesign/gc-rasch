@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-    <main id=<?php /* the_field('custom_page_id'); */ ?> class="main">
+    <main class="main">
         <section  class="content page-content">
             <!-- <div id="react-app"></div> -->
             <?php

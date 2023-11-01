@@ -8,15 +8,56 @@
         .navigation
             pointer-events: none
 
+#menu-main
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: clamp(3rem, 5vw, 4.5rem)
+
+    > li
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        background-color: var(--schwarz)
+
+.sub-menu
+    position: absolute
+    top: 100%
+    margin-top: clamp(1rem, 3vw, 3rem)
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 1rem
+    padding: 0
+    will-change: transform, opacity
+    transition: .3s transform ease, .3s opacity ease
+    max-width: 40rem
+
 // .sub-menu > li,
 .navigation li
     color: var(--weiss)
-    transition: .3s color ease
-    will-change: color, border-color
+    position: relative
 
-    &:hover
-        color: cyan
-        border-color: cyan
+    &:not(:hover):before
+        transform: scaleX(0)
+
+    &:not(.menu-item-has-children):before
+        content: ''
+        height: 2px
+        width: 100%
+        background-color: var(--orange)
+        display: block
+        position: absolute
+        bottom: 0
+        left: 0
+        transition: .3s transform ease
+        will-change: transform
+        transform-origin: left
+
+    li a
+        font-size: clamp(1rem, 1.7vw, 1.875rem)
+        text-transform: none
+        font-weight: 400
 
 .navigation
     position: fixed
@@ -33,124 +74,94 @@
     transform: translateX(-200px)
     box-sizing: border-box
 
-    .menu li
-        list-style-type: none
-        margin-top: 0
-        margin-bottom: 0
-
-
-    .menu-item-has-children > a
-        display: flex
-        align-items: center
-        justify-content: flex-start
-        pointer-events: none
-        cursor: default
-        line-height: 1
-
     .openIcon        
         display: inline-flex
         align-items: center
         justify-content: center
-        height: 1.25rem
+        height: calc(var(--fontSize) * .5)
         margin-left: 1.25rem
-
-        span
-            width: 1.25rem
-            display: block
-            border-bottom: 5px solid
-            will-change: opacity, color, border-color
-            transition: .3s opacity ease
-
-            &:last-child
-                position: absolute
-                transform: rotate(90deg)
-
-    // .link
-    //     cursor: pointer
+        fill: var(--orange)
+        transition: .3s transform ease
+        will-change: transform
 
     .menu-item-has-children
-        position: relative
+        width: 100%
+
+        > a
+            pointer-events: none
+            cursor: default
+            line-height: 1
+            display: flex
+            align-items: center
 
         &[data-status="closed"]
+            .openIcon 
+                transform: rotate(180deg)
             .sub-menu
+                transform: translateY(-100%)
                 pointer-events: none
                 opacity: 0
 
         &[data-status="open"]
-            .openIcon span
-                &:last-child
-                    opacity: 0
-
             .sub-menu
                 transform: translateY(0%)
-
-        // &:hover
-        //     > a span
-        //         color: cyan
-        //         border-color: cyan
-
-    .menu li:not(.menu-item-has-children)::after
-        content: ""
-
-    .sub-menu,
-    .menu > li:not(.menu-item-has-children)::after
-        min-height: calc(var(--fontSize) * 1.5)
-        display: block
-
-    .sub-menu
-        padding: 0
-        will-change: transform, opacity
-        transition: .3s transform ease, .3s opacity ease
-        a
-            margin-right: var(--fontSize)
-
-        
+                position: relative
 
 @media only screen and (min-width: 820px)
-    .navigation
-        .menu-item-has-children
-            &[data-status="closed"]
-                .sub-menu
-                    transform: translateX(-100%)
-
-        .sub-menu
-            display: flex
-            align-items: center
+    #menu-main,
+    #menu-main > li
+        align-items: flex-end
+    
+    .sub-menu
+        justify-content: flex-end
+//     .navigation
+//         .sub-menu
+//             display: flex
+//             align-items: center
+//             justify-content: flex-end
+//             flex-wrap: wrap
+//             gap: 1rem
 
 @media only screen and (max-width: 819px)
-    .navigation
-        padding-bottom: calc(var(--headerheight) + var(--smallMargin))
-        display: flex
-        flex-direction: column
-        justify-content: flex-end
+    #menu-main,
+    #menu-main > li
+        align-items: center
+    
+    .sub-menu
+        justify-content: center
+//     .navigation
+//         padding-bottom: calc(var(--headerheight) + var(--smallMargin))
+//         display: flex
+//         flex-direction: column
+//         justify-content: flex-end
 
-        .menu-item-has-children
-            &[data-status="closed"]
-                .sub-menu
-                    max-height: 0
-                    transform: translateY(-100%)
+//         .menu-item-has-children
+//             &[data-status="closed"]
+//                 .sub-menu
+//                     max-height: 0
+//                     transform: translateY(-100%)
 
-                    a
-                        pointer-events: none
+//                     a
+//                         pointer-events: none
                     
-        > div
-            margin-top: var(--smallMargin)
-            margin-bottom: var(--smallMargin)
+//         > div
+//             margin-top: var(--smallMargin)
+//             margin-bottom: var(--smallMargin)
 
-        .menu-main-container
-            max-height: 100%
-            overflow: auto
-        .sub-menu
-            box-sizing: border-box
-            padding-top: 1rem
-            padding-bottom: 1rem
-            a
-                padding-top: 1rem
-                padding-bottom: 1rem
-                margin-top: .5rem
-                margin-bottom: .5rem
-                display: block
+//         .menu-main-container
+//             max-height: 100%
+//             overflow: auto
+//         .sub-menu
+//             box-sizing: border-box
+//             padding-top: 1rem
+//             padding-bottom: 1rem
+//             a
+//                 padding-top: 1rem
+//                 padding-bottom: 1rem
+//                 margin-top: .5rem
+//                 margin-bottom: .5rem
+//                 display: block
 
-            span
-                display: block
-                min-height: 36px
+//             span
+//                 display: block
+//                 min-height: 36px

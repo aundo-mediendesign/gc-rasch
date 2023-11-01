@@ -7,12 +7,24 @@
 @import Buttons
 @import gravityForms
 @import gutenberg
+@import listen
 @import footer
 
 @font-face 
-    font-family: "Rustica-Regular"
+    font-family: "Akshar"
     font-display: swap
-    src: url('/wp-content/themes/aundo/fonts/RusticaRegularVariable.woff2') format('woff2'), url('/wp-content/themes/aundo/fonts/RusticaRegularVariable.woff') format('woff')
+    src: url('/wp-content/themes/aundo/fonts/Akshar-VariableFont_wght.ttf') format('truetype')
+
+@font-face 
+    font-family: "Raleway"
+    font-display: swap
+    src: url('/wp-content/themes/aundo/fonts/Raleway-VariableFont_wght.ttf') format('truetype')
+
+@font-face 
+    font-family: "Raleway"
+    font-style: italic
+    font-display: swap
+    src: url('/wp-content/themes/aundo/fonts/Raleway-Italic-VariableFont_wght.ttf') format('truetype')
 
 // @font-face
 //     font-family: "Rustica-Bold"
@@ -80,9 +92,14 @@ body
     overflow-x: hidden
     max-width: 100vw
 
+.content a
+    color: var(--orange)
 a
     text-decoration: none
     color: inherit
+    
+    &:not([class*="font-"])
+        font-weight: $fw_bold
 
 .ebeneBackground,
 .ebene0,
@@ -98,33 +115,6 @@ a
 .ebene-4
     position: relative
 
-ol
-    list-style-position: outside
-
-ul,
-ol
-    padding: 0
-    margin: 0
-
-.content ul 
-    list-style-type: none
-
-    li
-        padding-left: 10px
-        position: relative
-
-        &:first-child:not([class*="mt-"])
-            margin-top: calc(var(--fontSize) * .5)
-        &:last-child:not([class*="mb-"])
-            margin-bottom: calc(var(--fontSize) * .5)
-
-        &:before
-            content: '•'
-            position: absolute
-            left: 0
-
-    ul
-        padding-left: 15%
 
 // z-indexe
 .ebeneBackground,
@@ -202,28 +192,6 @@ ol
     .wrap,
     .wrap.wp-block-group > *
         flex-wrap: wrap
-
-// Listen
-ol
-    list-style-position: inside
-    padding-left: 0
-
-    li
-        counter-increment: li
-            
-        li:not(:last-child)
-            margin-bottom: 0
-        li:not(:first-child)
-            margin-top: 0
-        li
-            counter-increment: child-li
-            margin-left: 1.5rem
-
-            &::marker
-                content: counter(child-li, lower-alpha) ") "
-
-        &::marker
-            content: counter(li) ") "
 
 @media only screen and (max-width: 781px)
     #body .hide767

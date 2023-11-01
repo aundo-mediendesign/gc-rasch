@@ -13,23 +13,24 @@
         transition: .3s transform ease
         position: absolute
         left: 0
+        background-color: var(--orange)
 
         &:first-child
             top: 10px
+        
+        &:nth-child(2)
+            top: 22px
 
         &:last-child
-            top: 25px
+            top: 34px
 
-.header[data-status="closed"]
-    .burger
-        span
-            background-color: var(--weiss)
 .header[data-status="open"]
     .burger
         span
             top: 15px
-            background-color: var(--weiss)
             &:first-child
                 transform: rotate(45deg)
             &:last-child
                 transform: rotate(-45deg)
+            &:nth-child(2)
+                display: none

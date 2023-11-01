@@ -160,5 +160,13 @@
                 "class": "4"
             }
         }   
+    },
+    "list": {
+        "headline": "Liste",
+        "types": {
+            "0": {
+                "class": "check"
+            }
+        }
     }
 }

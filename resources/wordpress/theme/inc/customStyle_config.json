@@ -30,10 +30,6 @@
                 "class": "bigMargin",
                 "name": "Groß"
             },
-            "7": {
-                "class": "xtrabigMargin",
-                "name": "Sehr groß"
-            },
             "8": {
                 "class": "columnMargin",
                 "name": "Spaltenabstand"
@@ -75,10 +71,6 @@
                 "class": "bigMargin",
                 "name": "Groß"
             },
-            "7": {
-                "class": "xtrabigMargin",
-                "name": "Sehr groß"
-            },
             "8": {
                 "class": "columnMargin",
                 "name": "Spaltenabstand"
@@ -93,46 +85,28 @@
         "headline": "Schrift",
         "types": {
             "0": {
-                "class": "hero"
+                "class": "headline1"
             },
             "1": {
-                "class": "mediumBold"
+                "class": "headline2"
             },
             "2" : {
-                "class": "mediumItalic"
+                "class": "headline3"
             },
             "3" : {
-                "class": "mediumBoldUppercase"
+                "class": "headline4"
             },
             "4" : {
-                "class": "mediumLight"
+                "class": "subline"
             },
             "5" : {
-                "class": "mediumRegular"
+                "class": "button"
             },
             "6" : {
-                "class": "baseItalic"
+                "class": "benefits"
             },
             "7" : {
                 "class": "base"
-            },
-            "8" : {
-                "class": "baseStrong"
-            },
-            "9" : {
-                "class": "smallLight"
-            },
-            "10" : {
-                "class": "smallBold"
-            },
-            "11" : {
-                "class": "uppercase_regular"
-            },
-            "12" : {
-                "class": "uppercase_bold"
-            },
-            "13" : {
-                "class": "boldBig"
             },
             "14": {
                 "class": "other",
@@ -166,6 +140,17 @@
         "types": {
             "0": {
                 "class": "check"
+            }
+        }
+    },
+    "spacer": {
+        "headline": "Spacer",
+        "types": {
+            "0": {
+                "class": "on"
+            },
+            "1": {
+                "class": "off"
             }
         }
     }

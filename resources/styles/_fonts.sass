@@ -18,7 +18,7 @@ $fw_bold: 700
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
@@ -28,7 +28,7 @@ $fw_bold: 700
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
@@ -38,17 +38,17 @@ $fw_bold: 700
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
 @mixin headline_4()
-    --fontSize: 2.2rem
+    --fontSize: clamp(1.5rem, 2.5vw, 2.1rem)
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
@@ -58,7 +58,7 @@ $fw_bold: 700
     font-family: $font_1
     font-weight: $fw_medium
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
@@ -67,7 +67,7 @@ $fw_bold: 700
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
@@ -77,7 +77,7 @@ $fw_bold: 700
     font-family: $font_1
     font-weight: $fw_medium
     font-size: var(--fontSize)
-    line-height: 1.1
+    line-height: 1
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
@@ -118,4 +118,5 @@ h6:not([class*="font-"])
 
 .font-benefits
     @include benefits
-    
+
+

@@ -8,6 +8,7 @@
 @import gravityForms
 @import gutenberg
 @import listen
+@import spacer
 @import footer
 
 @font-face 
@@ -53,6 +54,7 @@ body
     --scrollBarWidth: .8rem
     --viewportWidth: 100vw
     --fontSize: clamp(1.2rem, 1.9vw, 1.5rem)
+    min-height: 100vh
     
 svg
     width: 100%
@@ -94,12 +96,14 @@ body
 
 .content a
     color: var(--orange)
+
+    &:not([class*="font-"])
+        font-weight: $fw_bold
+
 a
     text-decoration: none
     color: inherit
     
-    &:not([class*="font-"])
-        font-weight: $fw_bold
 
 .ebeneBackground,
 .ebene0,

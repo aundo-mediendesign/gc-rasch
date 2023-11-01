@@ -1,36 +1,36 @@
 .burger
-    width: 40px
-    height: 40px
+    width: clamp(1.25rem, 2vw, 2.5rem)
+    height: auto
+    aspect-ratio: 56 / 37
     flex-direction: column
     position: relative
     cursor: pointer
-    
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+
     span
-        width: 40px
-        height: 5px
+        width: clamp(1.25rem, 2vw, 2.5rem)
+        height: clamp(3px, .3vw, 6px)
         display: block
         will-change: transform
         transition: .3s transform ease
-        position: absolute
-        left: 0
         background-color: var(--orange)
-
-        &:first-child
-            top: 10px
-        
-        &:nth-child(2)
-            top: 22px
-
-        &:last-child
-            top: 34px
 
 .header[data-status="open"]
     .burger
         span
-            top: 15px
+            position: absolute
+            
             &:first-child
                 transform: rotate(45deg)
             &:last-child
                 transform: rotate(-45deg)
             &:nth-child(2)
                 display: none
+
+@media only screen and (max-width: 819px)
+    .burger    
+        position: fixed
+        bottom: calc(var(--sidePadding) / 2)
+        right: calc(var(--sidePadding) / 2)

@@ -128,7 +128,28 @@ article > .wp-block-button
     margin-left: auto
     margin-right: auto
 
-p, h2, div.wp-block-columns, div.aundo-slider, div.wp-block-query,
+// p, h2, div.wp-block-columns, div.aundo-slider, div.wp-block-query,
+.content > ul,
+.content > ol,
+.content > .wp-block-columns,
+.content > .wp-block-query,
+.content > .wp-block-quote,
+.content > .wp-block-group > .wp-block-group__inner-container,
+.sidePadding,
+.single-content > .wp-block-image,
+.single-content > .wp-block-video,
+.single-content > .aundo-slider,
+.smallColumns:not(.slide)
+    width: 100% 
+
+// .content > h1,
+// .content > h2,
+// .content > h3,
+// .content > h4,
+// .content > h5,
+// .content > p
+//     width: fit-content
+
 .content > h1,
 .content > h2,
 .content > h3,
@@ -146,11 +167,11 @@ p, h2, div.wp-block-columns, div.aundo-slider, div.wp-block-query,
 .single-content > .wp-block-video,
 .single-content > .aundo-slider,
 .smallColumns:not(.slide)
-    padding-left: var(--sidePadding)
-    padding-right: var(--sidePadding)
-    width: 100%
-    box-sizing: border-box
-    max-width: 100vw
+    &:not(.spacer-on)
+        padding-left: var(--sidePadding)
+        padding-right: var(--sidePadding)
+        box-sizing: border-box
+        max-width: 100vw
 
 // .content > *,
 .single-content > *,
@@ -165,12 +186,12 @@ p, h2, div.wp-block-columns, div.aundo-slider, div.wp-block-query,
     max-width: 40rem
 
 .maxWide,
-.content h2, 
 .content .has-text-align-center,
 .smallColumns,
 .content > ul:not(.fullwidth),
 .content > p:not(.fullwidth)
-    max-width: 70rem
+    &:not(.spacer-on)
+        max-width: 70rem
 
 input,
 textarea

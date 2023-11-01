@@ -43,7 +43,7 @@
 
     &:not(.menu-item-has-children):before
         content: ''
-        height: 2px
+        height: clamp(3px, .3vw, 6px)
         width: 100%
         background-color: var(--orange)
         display: block
@@ -67,12 +67,15 @@
     height: var(--windowHeight)
     background: var(--schwarz)
     overflow-y: auto
-    padding-top: calc(var(--headerheight) + var(--smallMargin))
+    padding-top: var(--headerheight)
     transition: .5s opacity ease, .5s transform ease
     will-change: opacity, transform
     opacity: 0
     transform: translateX(-200px)
     box-sizing: border-box
+    display: flex
+    flex-direction: column
+    justify-content: space-between
 
     .openIcon        
         display: inline-flex
@@ -87,8 +90,10 @@
     .menu-item-has-children
         width: 100%
 
-        > a
+        > a,
+        > a > *
             pointer-events: none
+        > a
             cursor: default
             line-height: 1
             display: flex
@@ -114,54 +119,13 @@
     
     .sub-menu
         justify-content: flex-end
-//     .navigation
-//         .sub-menu
-//             display: flex
-//             align-items: center
-//             justify-content: flex-end
-//             flex-wrap: wrap
-//             gap: 1rem
 
 @media only screen and (max-width: 819px)
     #menu-main,
     #menu-main > li
         align-items: center
     
+    .navigation
+        padding-bottom: var(--mediumMargin)
     .sub-menu
         justify-content: center
-//     .navigation
-//         padding-bottom: calc(var(--headerheight) + var(--smallMargin))
-//         display: flex
-//         flex-direction: column
-//         justify-content: flex-end
-
-//         .menu-item-has-children
-//             &[data-status="closed"]
-//                 .sub-menu
-//                     max-height: 0
-//                     transform: translateY(-100%)
-
-//                     a
-//                         pointer-events: none
-                    
-//         > div
-//             margin-top: var(--smallMargin)
-//             margin-bottom: var(--smallMargin)
-
-//         .menu-main-container
-//             max-height: 100%
-//             overflow: auto
-//         .sub-menu
-//             box-sizing: border-box
-//             padding-top: 1rem
-//             padding-bottom: 1rem
-//             a
-//                 padding-top: 1rem
-//                 padding-bottom: 1rem
-//                 margin-top: .5rem
-//                 margin-bottom: .5rem
-//                 display: block
-
-//             span
-//                 display: block
-//                 min-height: 36px

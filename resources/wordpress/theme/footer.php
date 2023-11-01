@@ -12,20 +12,22 @@
  */
 
 ?>
-    <footer id="site-footer" class="footer-group sidePadding editMargin">
-        <div>
-            <?php 
-                if ( is_active_sidebar( 'footer-widgets' ) ) :
-                    dynamic_sidebar( 'footer-widgets' );
-                endif;
-            ?>
-            <?php 
-                    wp_nav_menu( array(
-                        'menu' => 'Footer',                
-                        ) );
-                ?>
+    <p class="spacer overlap"></p>
+    <footer id="site-footer" class="footer-group sidePadding editMargin flex">
+        <?php echo get_custom_logo(); ?>
+        <!-- <div class="flex"> -->
+        <?php 
+            if ( is_active_sidebar( 'footer-widgets' ) ) :
+                dynamic_sidebar( 'footer-widgets' );
+            endif;
+        ?>
+        <?php 
+        // wp_nav_menu( array(
+        //     'menu' => 'Footer',                
+        //     ) );
+        ?>
+        <!-- </div> -->
            
-        </div>
     </footer>
                 
     <?php wp_footer(); ?>

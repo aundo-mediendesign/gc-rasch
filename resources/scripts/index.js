@@ -35,4 +35,15 @@ if (document.querySelector('.list-check')) {
     })
 }
 
+if (document.querySelector('.spacer-on')) {
+    document.querySelectorAll('.spacer-on').forEach(spacer => {
+        spacer.innerHTML = '<span class="spacer start"></span><span class="content">' + spacer.innerHTML + '</span><span class="spacer ende"></span>'
+
+        // let span = document.createElement('span')
+        // span.classList.add('spacer')
+        // spacer.prepend(span)
+        // spacer.append(span.cloneNode(true))
+    })
+}
+
 // Gutenberg-Plugins

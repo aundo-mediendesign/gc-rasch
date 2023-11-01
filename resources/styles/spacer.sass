@@ -1,0 +1,65 @@
+.spacer-on
+    width: 100vw
+    line-height: 1
+
+    span 
+        &.content
+            width: fit-content
+            text-align: center
+            top: calc(var(--fontSize) * .1)
+            position: relative
+            padding: 0 .5rem
+
+.spacer
+    line-height: 1
+    --fontSize: clamp(3.2rem, 5vw, 5rem)
+    width: clamp(.5rem, 80vw, 70rem)
+    font-size: var(--fontSize)
+    font-family: 'Raleway'
+    font-weight: 900
+    color: var(--gelb)
+    height: var(--fontSize)
+    overflow: hidden
+    position: relative
+    display: flex
+    z-index: 1
+
+    &:not(.ende)
+        justify-content: flex-end
+        margin-left: calc(var(--fontSize) * -1)
+
+    &.overlap
+        margin-bottom: calc(var(--fontSize) * -.5)
+
+    &:before
+        content: '///////////////////////////////////////////////////'
+        white-space: nowrap
+        position: absolute
+
+@media only screen and (max-width: 549px)
+    .spacer-on
+        span.ende 
+                margin-right: calc(var(--fontSize) * -1)
+                margin-left: auto
+@media only screen and (min-width: 550px)
+    .spacer-on
+        display: flex
+        justify-content: space-between
+        align-items: center
+        position: relative
+        left: var(--fontSize)
+
+        span 
+            &.content
+                // white-space: nowrap
+                flex-grow: 0
+                flex-shrink: 0
+                max-width: 72vw
+
+            &.start,
+            &.ende
+                flex-grow: 1
+                flex-shrink: 1
+
+            &.ende
+                margin-left: 0

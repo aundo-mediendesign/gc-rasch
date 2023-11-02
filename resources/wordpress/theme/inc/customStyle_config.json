@@ -153,5 +153,47 @@
                 "class": "off"
             }
         }
+    },
+    "colors": {
+        "headline": "Schriftfarbe",
+        "types": {
+            "0": {
+                "class": "gelb",
+                "name": "Gelb"
+            },
+            "1": {
+                "class": "orange",
+                "name": "Orange"
+            },
+            "2": {
+                "class": "schwarz",
+                "name": "Schwarz"
+            },
+            "3": {
+                "class": "weiss",
+                "name": "Weiß"
+            }
+        }
+    },
+    "bg": {
+        "headline": "Hintergrund-Farbe",
+        "types": {
+            "0": {
+                "class": "gelb",
+                "name": "Gelb"
+            },
+            "1": {
+                "class": "orange",
+                "name": "Orange"
+            },
+            "2": {
+                "class": "schwarz",
+                "name": "Schwarz"
+            },
+            "3": {
+                "class": "weiss",
+                "name": "Weiß"
+            }
+        }
     }
 }

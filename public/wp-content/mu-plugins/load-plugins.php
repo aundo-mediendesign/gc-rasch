@@ -6,7 +6,7 @@
 // require(WPMU_PLUGIN_DIR . '/aundo-masken/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-slider/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-element/index.php');
-// require(WPMU_PLUGIN_DIR . '/aundo-icons/index.php');
+require(WPMU_PLUGIN_DIR . '/aundo-icons/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-kachel/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-tageszeit/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-postslider/index.php');

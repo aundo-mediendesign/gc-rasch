@@ -11,12 +11,14 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
 body .is-layout-flex
     align-items: unset
 
-.is-vertically-aligned-center
-  display: flex
-  align-items: center
+.wp-block-column
+    &.is-vertically-aligned-center
+        align-self: center
+
+    &.is-vertically-aligned-bottom 
+        align-self: flex-end
 
 // Buttons
-// .wp-block-button,
 .wp-block-image
     width: 100%
 .aligncenter.wp-block-button,
@@ -38,3 +40,5 @@ body .is-layout-flex
         >.wp-block-column
             flex-basis: 0
             flex-grow: 1
+
+

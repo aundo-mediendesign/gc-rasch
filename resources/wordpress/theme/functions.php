@@ -74,7 +74,7 @@ add_action( 'wp_footer', 'scripts_aundo' );
 function wpdocs_enqueue_custom_admin_style() {
     $timecode = time(); 
     $version = date('YmdHis', $timecode);
-    wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/admin.css', false, $version );
+    wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/admin.css', array(), $version );
     wp_enqueue_style( 'custom_wp_admin_css' );
 }
 add_action( 'admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style' );
@@ -82,11 +82,10 @@ add_action( 'admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style' );
 function aundo_custom_styles () {
     $timecode = time();
     $version = date('YmdHis', $timecode);
-    wp_register_style( 'aundo-style', get_stylesheet_directory_uri() . '/style.css', false, $version );
+    wp_register_style( 'aundo-style', get_stylesheet_directory_uri() . '/style.css', array(), $version );
     wp_enqueue_style( 'aundo-style' );    
 }
 add_action ('wp_enqueue_scripts', 'aundo_custom_styles');
-
 
 // Add title attribute to images
 function featured_image_titles($attr, $attachment = null){
@@ -109,7 +108,7 @@ function disable_emojis() {
    }
 add_action( 'init', 'disable_emojis' );
 
-//Remove Gutenberg Block Library CSS from loading on the frontend
+// Remove Gutenberg Block Library CSS from loading on the frontend
 function smartwp_remove_wp_block_library_css(){
     wp_deregister_style('classic-theme-styles');
     wp_dequeue_style('classic-theme-styles');

@@ -100,25 +100,22 @@ function Header() {
     }
     const checkScrollDirection = () => {
         if (isScrolling) {
-            if ((window.pageYOffset < 100) && (headerStatus !== 'ontop')) {
-                setHeaderStatus('ontop')
-                showHeader(true)
-            }
-            if (isScrollingUp && (window.pageYOffset >= 100) && (headerStatus !== 'show')) {
+            // if ((window.scrollY < 100) && (headerStatus !== 'ontop')) {
+            //     setHeaderStatus('ontop')
+            //     showHeader(true)
+            // }
+            if (isScrollingUp && (window.scrollY >= 100) && (headerStatus !== 'show')) {
                 setHeaderStatus('show')
                 showHeader()
             }
             // checkScrollDown()
-            if (isScrollingDown && (navStatus !== "open") && (window.pageYOffset !== 0) && (headerStatus !== 'hide')) {
+            if (isScrollingDown && (navStatus !== "open") && (window.scrollY !== 0) && (headerStatus !== 'hide')) {
                 setHeaderStatus('hide')
                 hideHeader()
             }
-        }
-    }
-    const checkScrollDown = () => {
-        if (isScrollingDown && (navStatus !== "open") && (window.pageYOffset !== 0) && (headerStatus !== 'hide')) {
-            setHeaderStatus('hide')
-            hideHeader()
+        } else if ((!isScrolling) && (window.scrollY < 100)) {
+            setHeaderStatus('ontop')
+            showHeader(true)
         }
     }
 
@@ -179,7 +176,7 @@ function Header() {
         return () => {
             document.removeEventListener('click', disableHeader)
         }
-    }, [isScrolling, window.pageYOffset, navStatus, headerStatus, disableShowHeader])  
+    }, [isScrolling, window.scrollY, navStatus, headerStatus, disableShowHeader])  
     
     useEffect(() => {
         setupListeners()

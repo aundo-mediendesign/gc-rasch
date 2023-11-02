@@ -1,0 +1,189 @@
+// plugins
+html[data-ready="true"] .sliderJS 
+    .slide 
+        will-change: opacity
+        transition: opacity 1s
+
+.slider 
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    --layoutNumber: 1
+    // transition: transform 1s
+
+    figure
+        margin: 0
+// .wp-block-create-block-aundo-slider.alignCenter
+//     + .slider .slider
+//         align-items: center
+
+.slider
+    position: relative
+#body .slider:not(.clonedSlide)
+    position: relative
+    z-index: 1
+#body .slider.clonedSlide
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 0
+
+// #body .sliderJS::-webkit-scrollbar,
+#body .sliderContainer::-webkit-scrollbar
+    display: none 
+
+
+#body .sliderJS 
+    width: 100%
+    display: flex
+    flex-direction: column-reverse
+
+    img
+        object-fit: cover
+        width: 100%
+        // height: auto
+        
+    &.fade
+        .slider
+            display: grid
+            grid-template-columns: repeat(var(--layoutNumber), calc(100% / var(--layoutNumber)))
+            
+            .slide
+                grid-row: 1
+                grid-column: var(--column)
+                // opacity: 0
+
+                &[data-active="false"]
+                    opacity: 0
+
+    &.scroll
+        --translate: 0px
+
+        .slider
+            display: flex
+            overflow-x: scroll
+            overflow-y: visible
+            scrollbar-width: none
+            align-items: flex-start
+            transform: translateX(var(--translate))
+
+        .sliderClone
+            position: absolute
+            left: 100%
+            top: 0
+
+        // .sliderContainer
+        //     overflow-x: scroll
+            // scroll-behavior: smooth
+
+    .slide
+        margin-bottom: 0
+        // width: 1140px
+        
+    .slider
+        width: 100%
+        // padding-bottom: 2rem
+        left: 0
+
+        .wp-block-column
+            max-width: 100%
+
+        
+
+        svg:not.inlineIcon
+            width: 100% !important
+            height: auto !important
+
+        > * 
+            scroll-snap-align: start
+            flex-shrink: 0
+            transform-origin: center center
+            transform: scale(1)
+            position: relative
+
+    .nav 
+        margin-top: var(--smallMargin)
+        margin-bottom: 1rem
+        
+        .paginationPoint
+            display: inline-flex
+            width: 1.2rem
+            height: 1.2rem
+            background: var(--schwarz)
+            text-decoration: none
+            align-items: center
+            justify-content: center
+            border-radius: 50%
+            position: relative
+            margin: .5rem
+            cursor: pointer
+
+            &[data-active='true']
+                background: var(--gelb)
+
+        .arrow
+            cursor: pointer
+            margin-left: 1rem
+            margin-right: 1rem
+
+            svg
+                width: 1.2rem
+                height: auto
+                overflow: visible
+
+            &.prev
+                transform: rotate(90deg)
+            &.next
+                transform: rotate(-90deg)
+    // Chrome 
+    .slider::-webkit-scrollbar 
+        opacity: 0
+
+// Media Queries
+// @media only screen and (max-width: 549px)    
+//     .sliderJS .slide
+//         max-width: 300px
+
+@media only screen and (max-width: 781px)
+    .scroll
+        .slide,
+        .wp-block-create-block-aundo-slider
+            width: calc(100% / var(--layoutNumber))
+            padding-left: 1rem
+            padding-right: 1rem
+            box-sizing: border-box
+            // width: calc(90% / var(--layoutNumber))
+
+@media only screen and (max-width: 781px)
+    .aundo-slider.fade .slider
+        justify-items: center
+
+    // .content > .aundo-slider:not(.fade) .slide:not(.converted_svg)
+    .aundo-slider:not(.fade) .slide:not(.converted_svg)
+        margin-right: .5rem
+        
+    .content > .aundo-slider
+        // margin-left: .5rem
+
+        .slide:last-child
+            margin-right: var(--sidePadding)
+
+@media only screen and (min-width: 782px)
+    .sliderJS[data-justmobile="true"] .slide
+        flex-direction: column
+        align-items: flex-start
+
+    .page-content .scroll .slide:last-child
+        margin-right: var(--sidePadding)
+    .scroll 
+        .slide
+            padding-left: var(--sidePadding)
+            padding-right: var(--sidePadding)
+            box-sizing: border-box
+            width: calc(100% / var(--layoutNumber))
+            // width: calc(80% / var(--layoutNumber))
+
+            &.kacheln .back
+                left: var(--sidePadding) !important
+                width: calc(100% - var(--sidePadding))

@@ -1,0 +1,21 @@
+{
+	"name": "aundo-accordion",
+	"version": "0.1.0",
+	"description": "Example static block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+        "start": "wp-scripts start  --webpack-copy-php --output-path=../../public/wp-content/mu-plugins",
+        "build": "wp-scripts build  --webpack-copy-php --output-path=../../public/wp-content/mu-plugins",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js", 
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^23.4.0",
+		"react-error-overlay": "^6.0.9"
+	}
+}

@@ -31,10 +31,18 @@
                 "name": "Groß"
             },
             "8": {
-                "class": "columnMargin",
-                "name": "Spaltenabstand"
+                "class": "columnMarginGross",
+                "name": "Spaltenabstand Groß"
             },
             "9": {
+                "class": "columnMarginMittel",
+                "name": "Spaltenabstand Mittel"
+            },
+            "10": {
+                "class": "columnMarginKlein",
+                "name": "Spaltenabstand Klein"
+            },
+            "11": {
                 "class": "other",
                 "name": "Andere"
             }
@@ -72,12 +80,37 @@
                 "name": "Groß"
             },
             "8": {
-                "class": "columnMargin",
-                "name": "Spaltenabstand"
+                "class": "columnMarginGross",
+                "name": "Spaltenabstand Groß"
             },
             "9": {
+                "class": "columnMarginMittel",
+                "name": "Spaltenabstand Mittel"
+            },
+            "10": {
+                "class": "columnMarginKlein",
+                "name": "Spaltenabstand Klein"
+            },
+            "11": {
                 "class": "other",
                 "name": "Andere"
+            }
+        }
+    },
+    "gap": {
+        "headline": "Spaltenabstand",
+        "types": {
+            "0": {
+                "class": "gross"
+            },
+            "1": {
+                "class": "mittel"
+            },
+            "2": {
+                "class": "klein"
+            },
+            "3": {
+                "class": "aus"
             }
         }
     },
@@ -98,9 +131,6 @@
             },
             "4" : {
                 "class": "subline"
-            },
-            "5" : {
-                "class": "button"
             },
             "6" : {
                 "class": "benefits"
@@ -143,6 +173,19 @@
             }
         }
     },
+    "button": {
+        "headline": "Button-Styles",
+        "types": {
+            "0": {
+                "class": "linkstyle",
+                "name": "Kein Rahmen"
+            },
+            "1": {
+                "class": "noArrow",
+                "name": "Pfeil entfernen"
+            }
+        }
+    },
     "spacer": {
         "headline": "Spacer",
         "types": {
@@ -154,7 +197,7 @@
             }
         }
     },
-    "colors": {
+    "color": {
         "headline": "Schriftfarbe",
         "types": {
             "0": {
@@ -193,6 +236,19 @@
             "3": {
                 "class": "weiss",
                 "name": "Weiß"
+            }
+        }
+    },
+    "padding": {
+        "headline": "Padding",
+        "types": {
+            "0": {
+                "class": "bg",
+                "name": "Hintergrund-Padding"
+            },
+            "1": {
+                "class": "edge",
+                "name": "Randabfallend"
             }
         }
     }

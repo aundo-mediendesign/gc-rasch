@@ -1,16 +1,20 @@
+body
+    --burgerSize: clamp(2rem, 2vw, 2.5rem)
+    --burgerMargin: calc(var(--sidePadding) / 2)
+    --mobileBurgerSize: calc(var(--burgerSize) + var(--burgerMargin) + var(--burgerMargin))
 .burger
-    width: clamp(1.25rem, 2vw, 2.5rem)
-    height: auto
+    width: var(--burgerSize)
+    // height: auto
     aspect-ratio: 56 / 37
     flex-direction: column
-    position: relative
     cursor: pointer
     display: flex
     justify-content: space-between
     flex-direction: column
+    z-index: 99998
 
     span
-        width: clamp(1.25rem, 2vw, 2.5rem)
+        width: var(--burgerSize)
         height: clamp(3px, .3vw, 6px)
         display: block
         will-change: transform
@@ -29,8 +33,12 @@
             &:nth-child(2)
                 display: none
 
+// @media only screen and (min-width: 820px)
+//     .burger    
+//         top: calc((var(--headerheight) / 2) - ( var(--burgerSize) / 2 ))
+//         right: var(--sidePadding)
 @media only screen and (max-width: 819px)
     .burger    
         position: fixed
-        bottom: calc(var(--sidePadding) / 2)
-        right: calc(var(--sidePadding) / 2)
+        bottom: var(--burgerMargin)
+        right: var(--burgerMargin)

@@ -1,16 +1,24 @@
 .color-gelb
     color: var(--gelb)
-.color-orange
+.color-orange,
+.content a:not([class*="color-"]):not(.wp-block-button__link)
     color: var(--orange)
 .color-schwarz
     color: var(--schwarz)
-.color-weiss
+.color-weiss,
+.wp-block-cover:not([class*="color-"])
     color: var(--weiss)
 .bg-gelb
     background-color: var(--gelb)
 .bg-orange
     background-color: var(--orange)
+    color: var(--weiss)
 .bg-schwarz
     background-color: var(--schwarz)
+    color: var(--weiss)
 .bg-weiss
     background-color: var(--weiss)
+
+path
+    fill: currentColor
+    

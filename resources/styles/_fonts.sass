@@ -1,7 +1,7 @@
 $font_1: 'Raleway', sans-serif
 $font_2: 'Akshar', sans-serif
 $fw_light: 300
-$fw_medium: 600
+$fw_medium: 500
 $fw_bold: 700
 
 @mixin base()
@@ -10,6 +10,7 @@ $fw_bold: 700
     font-weight: $fw_light
     font-size: var(--fontSize)
     line-height: 1.5
+    text-transform: none
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
@@ -38,17 +39,17 @@ $fw_bold: 700
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1
+    line-height: 1.3
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
 @mixin headline_4()
-    --fontSize: clamp(1.5rem, 2.5vw, 2.1rem)
+    --fontSize: clamp(1.125rem, 2.5vw, 2.1rem)
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
-    line-height: 1
+    line-height: 1.4
     text-transform: uppercase
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
@@ -59,18 +60,19 @@ $fw_bold: 700
     font-weight: $fw_medium
     font-size: var(--fontSize)
     line-height: 1
+    text-transform: none
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
-@mixin button()
-    --fontSize: clamp(1.25rem, 2.2vw, 2.5rem)
-    font-family: $font_2
-    font-weight: $fw_bold
-    font-size: var(--fontSize)
-    line-height: 1
-    text-transform: uppercase
-    -webkit-font-smoothing: auto
-    -moz-osx-font-smoothing: auto
+// @mixin button()
+//     --fontSize: clamp(1.25rem, 2.2vw, 2.5rem)
+//     font-family: $font_2
+//     font-weight: $fw_bold
+//     font-size: var(--fontSize)
+//     line-height: 1
+//     text-transform: uppercase
+//     -webkit-font-smoothing: auto
+//     -moz-osx-font-smoothing: auto
 
 @mixin benefits()
     --fontSize: clamp(1rem, 1.7vw, 1.875rem)
@@ -78,6 +80,7 @@ $fw_bold: 700
     font-weight: $fw_medium
     font-size: var(--fontSize)
     line-height: 1
+    text-transform: none
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
@@ -91,30 +94,30 @@ textarea:not([class*="font-"])
 .font-headline1,
 h1:not([class*="font-"])
     @include headline_1()
-
-.font-subline,
-h1 + *:not([class*="font-"])
-    @include subline
     
 .font-headline2,
 h2:not([class*="font-"])
     @include headline_2
 
+.font-subline,
+h1 + *:not([class*="font-"])
+    @include subline
+
 .font-headline3,
-h3:not([class*="font-"]),
 #menu-main > li
     @include headline_3
     
 .font-headline4,
-.buttonLink:not([class*="font-"]),
+h3:not([class*="font-"]),
 h4:not([class*="font-"]),
 h5:not([class*="font-"]),
-h6:not([class*="font-"])
-    @include headline_4
-
+h6:not([class*="font-"]),
 .wp-block-button:not([class*="font-"]),
-.font-button
-    @include button
+.wp-block-image:not([class*="font-"]),
+cite
+    @include headline_4
+cite
+    font-style: normal
 
 .font-benefits
     @include benefits

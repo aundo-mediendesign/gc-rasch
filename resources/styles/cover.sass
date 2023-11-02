@@ -1,0 +1,35 @@
+.wp-block-cover 
+    > div > *:not([class*="bg-"]):not(.spacer)
+        padding-left: var(--sidePadding)
+        padding-right: var(--sidePadding)
+
+    > img
+        width: 100%
+
+.wp-block-column
+    .wp-block-cover
+        height: 100%
+
+@media only screen and (min-width: 820px)
+    .content > .wp-block-cover:first-child 
+        .spacer
+            margin-top: var(--mediumMargin)
+
+@media only screen and (min-width: 820px) and (max-width: 950px)
+    .content > .wp-block-cover:first-child 
+        .wp-block-group:not(.is-vertical)
+            flex-direction: row
+
+@media only screen and (max-width: 819px)
+    .content > .wp-block-cover:first-child
+        .wp-block-group:first-child
+            align-items: center 
+            justify-content: center 
+            height: calc( var(--windowHeight) - var(--mobileBurgerSize) - var(--headerheight) - var(--burgerMargin))
+        
+        .bg-schwarz
+            padding-top: var(--mobileBurgerSize)
+        
+        //     top: calc(var(--windowHeight) - var(--mobileBurgerSize))
+        //     width: 100%
+        //     padding-top: calc(var(--windowHeight) - var(--mobileBurgerSize))

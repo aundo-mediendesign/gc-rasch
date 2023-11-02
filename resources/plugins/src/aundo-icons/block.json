@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/aundo-icons",
+  "version": "0.1.0",
+  "title": "aundo-icons",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "aundo-icons",
+  "editorScript": "file:./index.js"
+}

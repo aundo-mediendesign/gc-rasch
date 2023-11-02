@@ -6,6 +6,9 @@
 @import linkedArea
 @import Buttons
 @import gravityForms
+@import cover
+@import plugins/icons
+@import plugins/slider
 @import wordpress-css/main-wp
 @import wordpress-css/wp-block-cover
 @import listen
@@ -42,6 +45,18 @@
 //     font-family: "Rustica-MediumItalic"
 //     font-display: swap
 //     src: url('/wp-content/themes/aundo/fonts/RusticaMediumItalic.woff2') format('woff2'), url('/wp-content/themes/aundo/fonts/RusticaMediumItalic.woff') format('woff')
+
+figure
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+figcaption:not([class*="mt-"])
+    margin-top: calc(var(--fontSize) / 2)
+
+.size-full img
+    width: 100%
 
 #wpadminbar
     top: unset
@@ -96,8 +111,6 @@ body
     max-width: 100vw
 
 .content a
-    color: var(--orange)
-
     &:not([class*="font-"])
         font-weight: $fw_bold
 
@@ -198,6 +211,39 @@ a
     .wrap.wp-block-group > *
         flex-wrap: wrap
 
+.content .wp-block-quote
+    text-align: center
+    display: grid
+    grid-template-columns: repeat(3, auto)
+    
+    p:not([class*="mb-"])
+        margin-bottom: 0
+    p, cite
+        grid-column: 2
+
+    cite
+        grid-row: 1
+        margin-top: clamp(3.2rem, 5vw, 5rem)
+ 
+    &:before
+        grid-column: 1 
+
+    &:before,
+    &:after
+        content: '//'
+        color: var(--gelb)
+        --fontSize: clamp(3.2rem, 5vw, 5rem)
+        font-size: var(--fontSize)
+        font-family: 'Raleway'
+        font-weight: 900
+        display: table
+        line-height: 1
+
+    &:after
+        grid-column: 3
+        align-self: end
+        margin-bottom: calc(var(--fontSize) * -.5)
+
 @media only screen and (max-width: 781px)
     #body .hide767
         display: none
@@ -212,6 +258,13 @@ a
 @media only screen and (max-width: 549px)
     #body .hide549
         display: none
+
+    .content .wp-block-quote
+        p, cite
+            grid-column: 1 / span 3
+
+        &:before
+            grid-row: 1
 @media only screen and (max-width: 781px)
     .reverse
         display: flex

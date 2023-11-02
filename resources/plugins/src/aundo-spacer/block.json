@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/aundo-spacer",
+	"version": "0.1.0",
+	"title": "Aundo Spacer",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "aundo-spacer",
+	"editorScript": "file:./index.js"
+}

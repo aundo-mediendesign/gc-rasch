@@ -63,11 +63,11 @@
     position: fixed
     left: 0
     top: 0
+    z-index: 99998
     width: var(--viewportWidth)
     height: var(--windowHeight)
     background: var(--schwarz)
     overflow-y: auto
-    padding-top: var(--headerheight)
     transition: .5s opacity ease, .5s transform ease
     will-change: opacity, transform
     opacity: 0
@@ -113,6 +113,8 @@
                 position: relative
 
 @media only screen and (min-width: 820px)
+    .navigation
+        padding-top: var(--headerheight)
     #menu-main,
     #menu-main > li
         align-items: flex-end
@@ -126,6 +128,7 @@
         align-items: center
     
     .navigation
+        padding-top: var(--mediumMargin)
         padding-bottom: var(--mediumMargin)
     .sub-menu
         justify-content: center

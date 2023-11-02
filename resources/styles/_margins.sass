@@ -8,9 +8,9 @@ figure
     margin-right: 0
 
 // Margins
-.mt-none
+#body .mt-none
     margin-top: 0
-.mb-none
+#body .mb-none
     margin-bottom: 0
 
 h1,
@@ -39,78 +39,73 @@ blockquote,
         margin-bottom: 0
 
 // Margins
-.mt-xtraSmallMargin
+#body .mt-xtraSmallMargin
     --ankerHeight: calc(var(--xtrasmallMargin) + 40px)
     margin-top: var(--xtrasmallMargin)
-.mb-xtraSmallMargin:not(:empty)
+#body .mb-xtraSmallMargin:not(:empty)
     margin-bottom: var(--xtrasmallMargin)
-.xtraSmallMargin
+#body .xtraSmallMargin
     margin: var(--xtrasmallMargin)
 
-.mt-smallMargin
+#body .mt-smallMargin
     --ankerHeight: calc(var(--smallMargin) + 40px)
     margin-top: var(--smallMargin)
 .content > .firstElement + .cover:not([class*="mb-"]),
-.mb-smallMargin:not(:empty)
+#body .mb-smallMargin:not(:empty)
     margin-bottom: var(--smallMargin)
 .smallMargin
     margin: var(--smallMargin)
-.mb-columnMargin
-    margin-bottom: var(--columnMargin)
-.mt-columnMargin
-    margin-top: var(--columnMargin)
-.mt-mediumMargin,
-.page-content > div:not([class*="mt-"]),
+
+#body .mt-mediumMargin,
+.page-content > div:not([class*="mt-"]):not(:first-child),
 .wp-block-quote:not([class*="mt-"]):not(:first-child)
     --ankerHeight: calc(var(--mediumMargin) + 40px)
     margin-top: var(--mediumMargin)
-.mb-mediumMargin,
+#body .mb-mediumMargin,
 .page-content > div:not([class*="mb-"]),
 .wp-block-columns:not([class*="mb-"])
     margin-bottom: var(--mediumMargin)
 .mediumMargin
     margin: var(--mediumMargin)
 
-.mt-bigMargin,
+#body .mt-bigMargin,
 .page-content > h2:not([class*="mt-"])
     --ankerHeight: calc(var(--bigMargin) + 40px)
     margin-top: var(--bigMargin)
-.mb-bigMargin
+#body .mb-bigMargin
     margin-bottom: var(--bigMargin)
 .bigMargin
     margin: var(--bigMargin)
 
-.mt-xtrabigMargin
+#body .mt-xtrabigMargin
     --ankerHeight: calc(var(--xtrabigMargin) + 40px)
     margin-top: var(--xtrabigMargin)
-.mb-xtrabigMargin
+#body .mb-xtrabigMargin
     margin-bottom: var(--xtrabigMargin)
 .xtrabigMargin
     margin: var(--xtrabigMargin)
 
-.mt-fontMargin
+#body .mt-fontMargin
     --ankerHeight: calc(var(--fontSize) + 40px)
     margin-top: var(--fontSize)
 
-.mb-fontMargin
+#body .mb-fontMargin
     margin-bottom: var(--fontSize)
 
-.mt-fontMarginHalf
+#body .mt-fontMarginHalf,
+h1 + h2:not([class*="mt-"])
     --ankerHeight: calc((var(--fontSize) / 2) + 40px)
     margin-top: calc(var(--fontSize) / 2)
 
-.mb-fontMarginHalf
+#body .mb-fontMarginHalf
     margin-bottom: calc(var(--fontSize) / 2)
 
-.page-content
-    h2
-        &:not([class*="mb-"]):not(:last-child)
-            margin-bottom: var(--fontSize)
 .content
     p
         &:not([class*="mb-"]):not(:last-child)
             margin-bottom: var(--fontSize)
-    h3
+    h3,
+    h2
         &:not([class*="mb-"])
             margin-bottom: calc(var(--fontSize) / 2)
 
@@ -158,7 +153,7 @@ article > .wp-block-button
 .content > p,
 .content > ul,
 .content > ol,
-.content > .wp-block-columns,
+// .content > .wp-block-columns,
 .content > .wp-block-query,
 .content > .wp-block-quote,
 .content > .wp-block-group > .wp-block-group__inner-container,
@@ -173,6 +168,17 @@ article > .wp-block-button
         box-sizing: border-box
         max-width: 100vw
 
+// #body .content > .wp-block-columns > .wp-block-column
+//     flex-grow: 0
+@media only screen and (min-width: 782px)
+    .content > .wp-block-columns > .wp-block-column:first-child:not(.padding-edge)
+        margin-left: var(--sidePadding)
+        box-sizing: border-box
+
+    .content > .wp-block-columns > .wp-block-column:last-child:not(.padding-edge)
+        margin-right: var(--sidePadding)
+        box-sizing: border-box
+
 // .content > *,
 .single-content > *,
 .smallColumns,
@@ -182,14 +188,12 @@ article > .wp-block-button
     margin-right: auto
 
 .maxSmall,
-.content > div p:not(.fullwidth):not(.has-text-align-center)
-    max-width: 40rem
+.content p:not(.fullwidth)
+    max-width: 45rem
 
 .maxWide,
-.content .has-text-align-center,
 .smallColumns,
-.content > ul:not(.fullwidth),
-.content > p:not(.fullwidth)
+.content > ul:not(.fullwidth)
     &:not(.spacer-on)
         max-width: 70rem
 
@@ -197,14 +201,39 @@ input,
 textarea
     box-sizing: border-box
 
-.column-gap
+.gap-gross,
+.content .wp-block-columns:not([class*="gap-"]),
+:where(.is-layout-flex.is-content-justification-center):not([class*="gap-"])
     gap: var(--columnGap)
 
-.content .wp-block-columns
-    &:not(.bigGap):not(.accColumns)
-        gap: var(--columnGap)
-    &.bigGap
-        gap: 5vw
+.gap-mittel
+    gap: 2vw
+
+.gap-klein
+    gap: 1.1vw
+
+.gap-aus
+    gap: 0
+
+#body .mb-columnMarginGross
+    margin-bottom: var(--columnGap)
+#body .mt-columnMarginGross
+    margin-top: var(--columnGap)
+#body .mb-columnMarginMittel
+    margin-bottom: 2vw
+#body .mt-columnMarginMittel
+    margin-top: 2vw
+#body .mb-columnMarginKlein
+    margin-bottom: 1.1vw
+#body .mt-columnMarginKlein
+    margin-top: 1.1vw
 
 #body .zeroGrow
     flex-grow: 0
+
+.padding-bg,
+.padding-edge
+    padding-top: var(--smallMargin)
+    padding-left: var(--smallMargin)
+    padding-right: var(--smallMargin)
+    padding-bottom: var(--smallMargin)

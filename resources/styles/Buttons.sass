@@ -6,7 +6,7 @@ html[data-ready="true"]
 
     #body .wp-block-button__link:before,
     #body .gform_footer:before,
-    #body .buttonLink svg
+    #body .button-linkstyle svg
         transition: .3s transform ease
         will-change: transform
 
@@ -22,18 +22,54 @@ html[data-ready="true"]
     align-items: center
     position: relative
     max-width: 100%
+
+    svg
+        width: auto
+        margin-left: 1rem
+        height: 1rem
+        top: calc(var(--fontSize) * -.1)
+        position: relative
     
     &:not([class*="ebene-"])
         z-index: 0
 
+    &:not(.button-linkstyle)
+        .wp-block-button__link
+            border: clamp(.18rem, .5vw, .375rem) solid var(--orange)
+            padding-top: clamp(10px, .9vw, 2rem) 
+            padding-bottom: clamp(8px, .6vw, 1.8rem)
+            padding-right: clamp(1rem, 1.9vw, 1.6rem)
+            padding-left: clamp(1rem, 1.9vw, 1.6rem)
+            color: currentColor
+
+            &:before
+                content: ""
+                width: 100% 
+                height: calc(100% + clamp(1px,.2vw,2.5px))
+                position: absolute
+                top: 0
+                left: 0
+                display: flex
+                background-color: var(--orange)
+                z-index: -1
+                transform-origin: left
+            
+            &:hover
+                color: var(--weiss)
+
+            &:not(:hover):before 
+                transform: scaleX(0)
+
+    &.button-linkstyle
+        .wp-block-button__link
+            color: var(--orange)
+            padding-right: 1rem
+
+            &:hover svg
+                transform: translateX(100%)
+
 .wp-block-button__link,
 .gform_footer
-    color: currentColor
-    border: clamp(.18rem, .5vw, .375rem) solid var(--orange)
-    padding-top: clamp(10px, .9vw, 2rem) 
-    padding-bottom: clamp(8px, .6vw, 1.8rem)
-    padding-right: clamp(1rem, 1.9vw, 1.6rem)
-    padding-left: clamp(1rem, 1.9vw, 1.6rem)
     margin-left: auto
     margin-right: auto
     background-color: transparent
@@ -54,42 +90,23 @@ html[data-ready="true"]
         padding: 0
         border-radius: 0
 
-.wp-block-button__link,
-.gform_footer
-    &:before
-        content: ""
-        width: 100% 
-        height: calc(100% + clamp(1px,.2vw,2.5px))
-        position: absolute
-        top: 0
-        left: 0
-        display: flex
-        background-color: var(--orange)
-        z-index: -1
-        transform-origin: left
-    
-    &:hover
-        color: var(--weiss)
-
-    &:not(:hover):before 
-        transform: scaleX(0)
-
 .wp-block-button
     .inlineIcon
         --fontSize: 3.6vw 
 
-.buttonLink
-    fill: currentColor
-    cursor: pointer
+// .button-linkstyle
+//     fill: currentColor
+//     cursor: pointer
 
-    &:hover svg
-        transform: translateX(100%)
+//     &:hover svg
+//         transform: translateX(100%)
     
-    svg
-        width: auto
+//     svg
+//         width: auto
+//         margin-left: 1rem
 
-    &:not([class*="color-"])
-        color: var(--orange)
+//     &:not([class*="color-"])
+//         color: var(--orange)
 
 
 //     width: fit-content

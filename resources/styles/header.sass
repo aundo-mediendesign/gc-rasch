@@ -2,9 +2,6 @@
 @import Navigation
 
 html[data-ready="true"] .header 
-    will-change: transform
-    transition: 1s transform ease
-
     .custom-logo-link,
     .logo
         transition: .3s transform ease
@@ -14,22 +11,16 @@ html[data-ready="true"] .header
 .custom-logo-link 
     display: flex
 
-
 .header
     height: var(--headerheight)
     z-index: 9999
-    position: relative
     color: var(--weiss)
-    background-color: var(--weiss)
-    
+
     .custom-logo-link img,
     .logo
         height: clamp(5rem, 5.2vw, 6.25rem)
         max-height: calc(var(--headerheight) * .8)
         width: auto
-
-    &.hidden
-        transform: translateY(-100%)
 
     svg
         cursor: pointer
@@ -40,10 +31,32 @@ html[data-ready="true"] .header
     height: var(--headerheight)
 
 @media only screen and (max-width: 819px)
-    .header[data-status="open"] 
-        .logo,
-        .custom-logo-link
-            position: fixed
-@media only screen and (min-width: 820px)
     .header
+        justify-content: center
+        // &[data-status="open"] 
+        //     .logo,
+        //     .custom-logo-link
+        //         position: fixed
+        //         z-index: 99998
+        //         margin-left: auto
+        //         margin-right: auto
+
+@media only screen and (min-width: 820px)
+    html[data-ready="true"] .header 
+        transition: 1s transform ease, .3s background-color ease
+        will-change: transform, background-color
+
+    header
         position: fixed
+        width: 100%
+        z-index: 99
+        pointer-events: none
+
+    .header 
+        pointer-events: all
+        justify-content: space-between
+        &:not(.ontop)
+            background-color: var(--weiss)
+
+        &.hidden
+            transform: translateY(-100%)

@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from 'react'
 import Header from './Header'
 import { useInView } from 'react-intersection-observer'
+const Slider = React.lazy(() => import (/* webpackChunkName: "Slider" */ './plugins/Slider'))
 
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
@@ -21,9 +22,20 @@ wp.element.render(
     updateHeader
 )
 
-if (document.querySelector('.buttonLink')) {
-    document.querySelectorAll('.buttonLink').forEach(link => {
-        link.innerHTML = link.innerHTML + '<svg xmlns="http://www.w3.org/2000/svg" width="18.16" height="26.42" viewBox="0 0 18.16 26.42"><path d="m4.13,26.42L.01,22.05l9.39-8.85L0,4.37,4.11,0l14.05,13.2-14.03,13.22Z"/></svg> '
+if (document.querySelector('.wp-block-button')) {
+    document.querySelectorAll('.wp-block-button').forEach(buttonWrapper => {
+        // var words = button.innerHTML.split(" ");
+
+        // var lastWord = words.pop();
+        // var allOtherWords = words.join(" ");
+
+        // button.innerHTML = allOtherWords + '<span style="white-space: nowrap">' + lastWord + ' <svg xmlns="http://www.w3.org/2000/svg" width="18.16" height="26.42" viewBox="0 0 18.16 26.42"><path d="m4.13,26.42L.01,22.05l9.39-8.85L0,4.37,4.11,0l14.05,13.2-14.03,13.22Z"/></svg></span>'
+        
+        if (!buttonWrapper.classList.contains('button-noArrow')) {
+            buttonWrapper.querySelectorAll('.wp-block-button__link').forEach(button => {
+                button.innerHTML = '<span>' + button.innerHTML + '</span><svg xmlns="http://www.w3.org/2000/svg" width="18.16" height="26.42" viewBox="0 0 18.16 26.42"><path d="m4.13,26.42L.01,22.05l9.39-8.85L0,4.37,4.11,0l14.05,13.2-14.03,13.22Z"/></svg>'
+            })
+        }
     })
 }
 
@@ -37,13 +49,51 @@ if (document.querySelector('.list-check')) {
 
 if (document.querySelector('.spacer-on')) {
     document.querySelectorAll('.spacer-on').forEach(spacer => {
-        spacer.innerHTML = '<span class="spacer start"></span><span class="content">' + spacer.innerHTML + '</span><span class="spacer ende"></span>'
-
-        // let span = document.createElement('span')
-        // span.classList.add('spacer')
-        // spacer.prepend(span)
-        // spacer.append(span.cloneNode(true))
+        if ((spacer.tagName.toLowerCase() === 'p')
+        || (spacer.tagName.match(/^h[1-6]$/i))) {
+            spacer.innerHTML = '<span class="spacer start"></span><span class="content">' + spacer.innerHTML + '</span><span class="spacer ende"></span>'
+        } else {
+            var spacerElement = document.createElement('span')
+            spacerElement.classList.add('spacer')
+            spacer.append(spacerElement) 
+            if (spacer.classList.contains('wp-block-cover') || spacer.classList.contains('wp-block-group')) {
+                spacer.querySelector('div').append(spacerElement) 
+            } else {
+                spacer.append(spacerElement) 
+            }
+        }
     })
 }
 
 // Gutenberg-Plugins
+// aundo-icons
+if (document.querySelector(".aundo-icons")) { 
+    const divsToUpdate = document.querySelectorAll(".aundo-icons")
+    divsToUpdate.forEach(function (div) {
+        let nextElement = div.nextElementSibling
+        if (nextElement && !div.classList.contains('blockIcon')) {
+            if (nextElement.classList.contains("wp-block-buttons")) {
+                div.style.display = ""
+                nextElement.querySelector(".wp-block-button").prepend(div)
+            }
+            else {
+                div.style.display = "inline-flex"
+                nextElement.prepend(div)
+            }
+        }
+    })
+}
+if (document.querySelector(".aundo-slider")) { 
+    const divsToUpdate = document.querySelectorAll(".sliderJS")
+    divsToUpdate.forEach(function (div, index) {
+        div.id = 'slider' + index
+        const data = JSON.parse(div.parentNode.querySelector("pre").innerHTML)
+        Object.assign(data)
+        wp.element.render( wp.element.createElement( BlockFunction, {props: data, parent: div.parentNode}  ), div )
+    })
+    function BlockFunction({props, parent}) { 
+        return (
+        <Suspense fallback={<span class="loading"></span>}><Slider props={props} useInView={useInView} parent={parent}/></Suspense>
+        )
+}
+}

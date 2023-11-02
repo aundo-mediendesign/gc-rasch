@@ -1,0 +1,62 @@
+body
+    --iconSize: clamp(4rem, 7vw, 8.4rem)
+
+.blockIcon 
+    display: block
+    width: fit-content
+    height: var(--iconSize)
+    width: var(--iconSize)
+
+.inlineIcon
+    display: inline-flex
+    margin-right: calc(var(--fontSize) *.3)
+    height: calc(var(--fontSize) * .8)
+    width: calc(var(--fontSize) * .8)
+
+p .inlineIcon
+    position: relative
+    top: calc(var(--fontSize) * 0.1)
+    
+.wp-block-button .inlineIcon
+    min-width: 1.6rem
+    min-height: 1.6rem
+    padding-top: 0
+    margin-right: .5rem
+
+#body .blockIconWrap + p
+    margin-top: calc(var(--fontSize) * .5)
+
+.smallIcons .aundo-icons 
+    width: 3rem
+    height: 3rem
+
+.wp-block-image + .aundo-icons
+    margin-top: calc(var(--iconSize) / -2)
+    z-index: 2
+    position: relative
+    margin-left: var(--smallMargin)
+
+    + *
+        margin-top: calc(var(--iconSize) / -2)
+        padding-top: calc(var(--iconSize) / 1.5)
+
+@media only screen and (max-width: 781px)
+    .wp-block-column
+        > .aundo-icons:first-child
+            margin-top: calc(var(--iconSize) / -2 - var(--smallMargin))
+            z-index: 2
+            position: relative
+
+            + *
+                margin-top: var(--smallMargin)
+
+@media only screen and (min-width: 782px)
+    .wp-block-column
+        position: relative
+        > .aundo-icons:first-child
+            position: absolute
+            left: calc(var(--iconSize) / -2)
+            top: var(--smallMargin)
+
+            ~ *
+                margin-left: var(--smallMargin)

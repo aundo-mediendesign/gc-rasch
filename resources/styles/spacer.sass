@@ -1,7 +1,7 @@
-.spacer-on
+@mixin spacerOn
     width: 100vw
     line-height: 1
-
+    
     span 
         &.content
             width: fit-content
@@ -9,6 +9,21 @@
             top: calc(var(--fontSize) * .1)
             position: relative
             padding: 0 .5rem
+            display: block
+            box-sizing: border-box
+            margin-left: auto
+            margin-right: auto
+
+@for $i from 1 through 6 
+    h#{$i}.spacer-on
+        @include spacerOn
+
+p.spacer-on
+    @include spacerOn
+
+.wp-block-column .spacer:not(.overlap)
+    margin-top: calc((var(--smallMargin) * -1 ) + (var(--fontSize) * -.5))
+    margin-bottom: 1rem
 
 .spacer
     line-height: 1
@@ -23,10 +38,14 @@
     position: relative
     display: flex
     z-index: 1
+    max-width: 80%
 
-    &:not(.ende)
+    &:not(.ende):not(.rightAlign)
         justify-content: flex-end
-        margin-left: calc(var(--fontSize) * -1)
+        margin-left: calc(var(--fontSize) * -1) !important
+    &.rightAlign
+        margin-left: auto !important
+        margin-right: calc(var(--fontSize) * -1) !important
 
     &.overlap
         margin-bottom: calc(var(--fontSize) * -.5)
@@ -36,13 +55,28 @@
         white-space: nowrap
         position: absolute
 
+.padding-edge .spacer.overlap:last-child
+    margin-bottom: calc((var(--fontSize) * -.5) - var(--smallMargin))
+
+
+#body .content > *:last-child:not([class*="mb-"])
+    margin-bottom: calc((clamp(3.2rem, 5vw, 5rem) * -.5) )
+
 @media only screen and (max-width: 549px)
-    .spacer-on
+    @mixin spacerOn-max549
         span.ende 
-                margin-right: calc(var(--fontSize) * -1)
-                margin-left: auto
+                margin-right: calc(var(--fontSize) * -1) !important
+                margin-left: auto !important
+
+    @for $i from 1 through 6 
+        h#{$i}.spacer-on
+            @include spacerOn-max549
+            
+    p.spacer-on
+        @include spacerOn-max549
+
 @media only screen and (min-width: 550px)
-    .spacer-on
+    @mixin spacerOn-min550
         display: flex
         justify-content: space-between
         align-items: center
@@ -51,7 +85,6 @@
 
         span 
             &.content
-                // white-space: nowrap
                 flex-grow: 0
                 flex-shrink: 0
                 max-width: 72vw
@@ -62,4 +95,15 @@
                 flex-shrink: 1
 
             &.ende
-                margin-left: 0
+                margin-left: 0 !important
+
+    @for $i from 1 through 6 
+        h#{$i}.spacer-on
+            @include spacerOn-min550
+
+    p.spacer-on
+        @include spacerOn-min550
+
+@media only screen and (min-width: 782px)
+    .wp-block-column .spacer
+        max-width: 30vw

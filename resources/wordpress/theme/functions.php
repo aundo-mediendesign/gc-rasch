@@ -108,7 +108,7 @@ function disable_emojis() {
    }
 add_action( 'init', 'disable_emojis' );
 
-// Remove Gutenberg Block Library CSS from loading on the frontend
+//Remove Gutenberg Block Library CSS from loading on the frontend
 function smartwp_remove_wp_block_library_css(){
     wp_deregister_style('classic-theme-styles');
     wp_dequeue_style('classic-theme-styles');

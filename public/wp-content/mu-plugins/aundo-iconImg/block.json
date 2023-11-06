@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/aundo-iconimg",
+  "version": "0.1.0",
+  "title": "Aundo Icon-Bild",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "aundo-iconimg",
+  "editorScript": "file:./index.js"
+}

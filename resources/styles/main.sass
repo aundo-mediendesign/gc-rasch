@@ -9,6 +9,7 @@
 @import cover
 @import plugins/icons
 @import plugins/slider
+@import plugins/accordion
 @import wordpress-css/main-wp
 @import wordpress-css/wp-block-cover
 @import listen
@@ -53,6 +54,7 @@ figure
     align-items: center
 
 figcaption:not([class*="mt-"])
+    text-align: center
     margin-top: calc(var(--fontSize) / 2)
 
 .size-full img
@@ -244,12 +246,14 @@ a
         align-self: end
         margin-bottom: calc(var(--fontSize) * -.5)
 
+
 @media only screen and (max-width: 781px)
     #body .hide767
         display: none
 
-    .wp-block-columns
+    .wp-block-columns:not([class*="column-"])
         flex-direction: column
+
             
 @media only screen and (max-width: 980px)
     #body .hide980
@@ -265,6 +269,11 @@ a
 
         &:before
             grid-row: 1
+
+
+    .column-550
+        flex-direction: column
+
 @media only screen and (max-width: 781px)
     .reverse
         display: flex
@@ -273,6 +282,13 @@ a
     .smallColumns
         .wp-block-column
             flex-basis: auto !important
+
+    .hide781
+        display: none
+
+    .column-550
+        .wp-block-column
+            flex-basis: unset !important
 @media only screen and (min-width: 782px)
     .smallColumns
         .wp-block-column

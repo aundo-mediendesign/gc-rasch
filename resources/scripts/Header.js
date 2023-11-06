@@ -29,11 +29,13 @@ function Header() {
             else {
                 setNavStatus("open")
                 document.querySelector("body").style.overflow = "hidden"
+                document.querySelector("body").style.maxHeight = "var(--windowHeight)"
             }
         }
         else {
             setNavStatus("closed")
             document.querySelector("body").style.overflow = ""
+            document.querySelector("body").style.maxHeight = ""
         }
     }
 
@@ -104,6 +106,7 @@ function Header() {
             //     setHeaderStatus('ontop')
             //     showHeader(true)
             // }
+            
             if (isScrollingUp && (window.scrollY >= 100) && (headerStatus !== 'show')) {
                 setHeaderStatus('show')
                 showHeader()
@@ -129,7 +132,7 @@ function Header() {
     }
     function setInitialMenuState(parent) {
         parent.querySelector("a").innerHTML = '<span>' + parent.querySelector("a").innerHTML + '</span><svg class="openIcon" xmlns="http://www.w3.org/2000/svg" width="39.31" height="25.01" viewBox="0 0 39.31 25.01"><path d="m19.67,25.01L0,4.13,4.37.02l15.3,16.23L34.93,0l4.37,4.11-19.63,20.9Z"/></svg>';
-        parent.dataset.status = "closed";
+        parent.dataset.status = "open";
     }
     
     function setWindowDimensions() {
@@ -208,32 +211,32 @@ function Header() {
         const mouseleaveHandler = (e) => openClose(e)
         const clickHandler = (e) => openClose(e, "click")
 
-        if (size > 819) {
-            parents.forEach(parent => {
-                parent.dataset.status = "closed"
-                parent.removeEventListener("click", clickHandler)
-                parent.addEventListener("mouseenter", mouseenterHandler)
-                parent.addEventListener("mouseleave", mouseleaveHandler)
+        // if (size > 819) {
+        //     parents.forEach(parent => {
+        //         parent.dataset.status = "open"
+        //         parent.removeEventListener("click", clickHandler)
+        //         // parent.addEventListener("mouseenter", mouseenterHandler)
+        //         // parent.addEventListener("mouseleave", mouseleaveHandler)
+        //     })
+        //     // return () => {
+        //     //     parents.forEach((parent) => {
+        //     //         parent.removeEventListener("mouseenter", mouseenterHandler);
+        //     //         parent.removeEventListener("mouseleave", mouseleaveHandler);
+        //     //     })
+        //     // }
+        // }
+        // if (size <= 819) {
+        // }
+        parents.forEach(parent => {
+            parent.dataset.status = "open"
+            // parent.removeEventListener("mouseenter", mouseenterHandler)
+            // parent.removeEventListener("mouseleave", mouseleaveHandler)
+            parent.addEventListener("click", clickHandler)
+        })
+        return () => {
+            parents.forEach((parent) => {
+                parent.removeEventListener("click", clickHandler);
             })
-            return () => {
-                parents.forEach((parent) => {
-                    parent.removeEventListener("mouseenter", mouseenterHandler);
-                    parent.removeEventListener("mouseleave", mouseleaveHandler);
-                })
-            }
-        }
-        if (size <= 819) {
-            parents.forEach(parent => {
-                parent.dataset.status = "closed"
-                parent.removeEventListener("mouseenter", mouseenterHandler)
-                parent.removeEventListener("mouseleave", mouseleaveHandler)
-                parent.addEventListener("click", clickHandler)
-            })
-            return () => {
-                parents.forEach((parent) => {
-                    parent.removeEventListener("click", clickHandler);
-                })
-            }
         }
     }, [size])
     

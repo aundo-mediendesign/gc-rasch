@@ -1,15 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/aundo-icons",
+	"name": "create-block/aundo-accordion",
 	"version": "0.1.0",
-	"title": "aundo-icons",
+	"title": "Aundo-Accordion",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "aundo-icons",
-	"editorScript": "file:./index.js"
+	"textdomain": "aundo-accordion",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
 }

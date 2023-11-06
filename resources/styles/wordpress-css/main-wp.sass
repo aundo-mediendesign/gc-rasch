@@ -18,6 +18,9 @@ body .is-layout-flex
     &.is-vertically-aligned-bottom 
         align-self: flex-end
 
+body .are-vertically-aligned-top
+    align-items: flex-start
+
 // Buttons
 .wp-block-image
     width: 100%
@@ -29,9 +32,12 @@ body .is-layout-flex
 .alignright img
     margin-left: auto
 
-@media (max-width: 781px)
-    .wp-block-columns
-        flex-direction: column
+// @media (max-width: 550px)
+//     .column-550
+//         flex-direction: column
+// @media (max-width: 781px)
+//     .wp-block-columns:not([class*="column-"])
+//         flex-direction: column
 
 @media (min-width: 782px)
     .wp-block-columns:not(.is-not-stacked-on-mobile)

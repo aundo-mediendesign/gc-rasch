@@ -45,7 +45,7 @@ $fw_bold: 700
     -moz-osx-font-smoothing: auto
 
 @mixin headline_4()
-    --fontSize: clamp(1.125rem, 2.5vw, 2.1rem)
+    --fontSize: clamp(1.25rem, 2.5vw, 2.1rem)
     font-family: $font_2
     font-weight: $fw_bold
     font-size: var(--fontSize)
@@ -84,6 +84,9 @@ $fw_bold: 700
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
 
+strong
+    font-weight: $fw_bold
+
 body,
 .font-base,
 input[type="text"]:not([class*="font-"]),
@@ -100,7 +103,8 @@ h2:not([class*="font-"])
     @include headline_2
 
 .font-subline,
-h1 + *:not([class*="font-"])
+.content > .wp-block-cover:first-child h1 + *:not([class*="font-"]),
+.content > .wp-block-cover:first-child .font-headline1 + *:not([class*="font-"])
     @include subline
 
 .font-headline3,
@@ -113,7 +117,8 @@ h4:not([class*="font-"]),
 h5:not([class*="font-"]),
 h6:not([class*="font-"]),
 .wp-block-button:not([class*="font-"]),
-.wp-block-image:not([class*="font-"]),
+.accHead:not([class*="font-"]),
+figcaption:not([class*="font-"]),
 cite
     @include headline_4
 cite

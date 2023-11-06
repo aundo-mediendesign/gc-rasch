@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       Aundo Icons
- * Description:       Custom Gutenberg-Blöcke.
+ * Plugin Name:       Aundo Svg-Compiler
+ * Description:       Aundo Svg-Block.
  * Version:           0.1.0
  * Author:            a&o mediendesign
- * Text Domain:       aundo-icons
+ * Text Domain:       aundo-saveassvg
  *
  * @package           create-block
  */
@@ -18,7 +18,7 @@
  */
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class aundoicons {
+class iconimg {
   function __construct() {
     add_action('init', array($this, 'adminAssets'));
   }
@@ -35,51 +35,33 @@ class aundoicons {
         $getContent = [$setAttributes, $content];
     }
 
-    function theHTML($attributes, $content) { 
+    function theHTML($attributes, $content) {  
         ob_start(); 
-        $class = '';
-        $style = '';
-        if ($attributes["block"]) {
-            $class = 'blockIcon';
-        } 
-        else {
-            $class = 'inlineIcon';
-            $style = 'display: none';
-        }
-        if ($attributes["className"]) {
-            $class .= ' ' . $attributes["className"];
-        }
-        if ($attributes["overlap"]) {
-            $class .= ' overlap';
-        }
-        ?>
-        <?php 
+        
         $attachmentId = $attributes['imageId'];
-
-        if (!$attachmentId) {
-            // Backup für alte Plugin-Version
-            $attachmentId = attachment_url_to_postid($attributes['image']);
-        }
         $attachment = get_post($attachmentId);
+        $position = $attributes['position'] ? $attributes['position'] : 'moveRight';
+        $stretch = $attributes['stretch'] ? 'false' : 'true';
+        
         if ($attachment && 'image/svg+xml' === $attachment->post_mime_type) {
             $imagePath = get_attached_file($attachmentId);
             $svgCode = file_get_contents($imagePath);
             $stretch = $attributes["stretch"] ? 'true' : 'false';
             $modifiedSvgCode = preg_replace('/\sid="[^"]+"/', '', $svgCode);
-            $modifiedSvgCode = str_replace(
-            '<svg', '<svg 
-            role="presentation"
-            style="' . $style . '"
-            class="aundo-icons ' . $class . '"', 
-            $modifiedSvgCode
-            );
+            $modifiedSvgCode = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $svgCode);
+            $modifiedSvgCode = str_replace('<svg', '<svg role="presentation" style="display: none;" class="imageIcon aundo-icons blockIcon ' . $attributes['bgColor'] . ' ' . $attributes['className'] . '"', $modifiedSvgCode);
+            
+            echo '<div class="iconImg" data-position="' . $position . '" data-stretch="' . $stretch . '" >';
             echo $modifiedSvgCode;
+            echo $content;
+            echo '</div>';
+
         }
-        
         ?>
+
         <?php return ob_get_clean();
     }
 }
 
-$aundoicons = new aundoicons();
+$saveassvg = new iconimg();
 

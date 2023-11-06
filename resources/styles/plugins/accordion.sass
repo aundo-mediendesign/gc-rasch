@@ -1,0 +1,61 @@
+html[data-ready="true"] 
+    // .openicon 
+    //     transition: .3s transform ease
+    //     will-change: transform
+
+    //     rect
+    //         transition: .3s opacity ease
+    //         will-change: opacity
+
+    .accContent
+        will-change: max-height, opacity
+        transition: .5s max-height ease, .5s opacity ease
+
+
+.aundo-accordion
+    --size: clamp(48px, 4.4vw, 60px)
+
+    &[data-active="true"]
+        .accContent
+            max-height: 1000px
+            opacity: 1
+
+        .titleClosed
+            display: none 
+
+        .openicon
+            transform: rotate(90deg)
+
+    &[data-active="false"]
+        &:not:hover
+            .openicon
+                transform: rotate(-90deg)
+
+        &:hover
+            .openicon
+                transform: translateX(100%)
+
+        .accContent
+            max-height: 0
+            opacity: 0
+
+        .titleOpen
+            display: none
+
+.accContent::-webkit-scrollbar
+    display: none
+
+.accContent
+    overflow: auto
+    scrollbar-width: none
+
+.accHead
+    padding-right: 1rem
+    display: flex
+    align-items: center
+    cursor: pointer
+    &:not([class*="color-"])
+        color: var(--orange)
+.openicon
+    width: fit-content
+    

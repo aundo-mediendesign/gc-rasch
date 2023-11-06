@@ -1,5 +1,5 @@
 <?php
-// require(WPMU_PLUGIN_DIR . '/aundo-accordion/index.php');
+require(WPMU_PLUGIN_DIR . '/aundo-accordion/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-background-color/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-imgToSvg/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-include-lottie/index.php');
@@ -13,6 +13,7 @@ require(WPMU_PLUGIN_DIR . '/aundo-spacer/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-postslider/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-FirstElement/index.php');
 require(WPMU_PLUGIN_DIR . '/aundo-custom-styles/index.php');
+require(WPMU_PLUGIN_DIR . '/aundo-iconImg/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-tab-menu/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-tab/index.php');
 // require(WPMU_PLUGIN_DIR . '/aundo-maskColumn/index.php');

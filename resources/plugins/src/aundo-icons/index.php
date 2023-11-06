@@ -49,6 +49,9 @@ class aundoicons {
         if ($attributes["className"]) {
             $class .= ' ' . $attributes["className"];
         }
+        if ($attributes["overlap"]) {
+            $class .= ' overlap';
+        }
         ?>
         <?php 
         $attachmentId = $attributes['imageId'];

@@ -30,33 +30,50 @@ p .inlineIcon
     width: 3rem
     height: 3rem
 
-.wp-block-image + .aundo-icons
-    margin-top: calc(var(--iconSize) / -2)
-    z-index: 2
-    position: relative
-    margin-left: var(--smallMargin)
+[data-stretch="true"] .wp-block-image,
+[data-stretch="true"],
+.stretch
+    width: 100%
+    height: 100%
 
-    + *
-        margin-top: calc(var(--iconSize) / -2)
-        padding-top: calc(var(--iconSize) / 1.5)
+    img
+        object-fit: cover
+        width: 100%
+        height: 100%
+
+.iconImg 
+    .wp-block-image
+        position: relative
+
+.imageIcon
+    position: absolute
+
+[data-position="moveBottom"] 
+    padding-bottom: calc(var(--iconSize) / 2)
+    .imageIcon
+        left: var(--smallMargin)
+        top: calc(100% - (var(--iconSize) / 2))
+
+.overlap
+    margin-top: calc(var(--iconSize) * -.5)
+    margin-left: var(--smallMargin)
+    position: relative
 
 @media only screen and (max-width: 781px)
-    .wp-block-column
-        > .aundo-icons:first-child
-            margin-top: calc(var(--iconSize) / -2 - var(--smallMargin))
-            z-index: 2
-            position: relative
+    [data-position="moveRight"] 
+        .imageIcon
+            left: var(--smallMargin)
+            top: calc(100% - (var(--iconSize) / 2))
 
-            + *
-                margin-top: var(--smallMargin)
+    .iconImg + figcaption
+        padding-top: calc(var(--iconSize) / 2)
+    .afterIconColumn
+        padding-top: calc(var(--paddingLeft) + (var(--iconSize) / 2))
 
 @media only screen and (min-width: 782px)
-    .wp-block-column
-        position: relative
-        > .aundo-icons:first-child
-            position: absolute
-            left: calc(var(--iconSize) / -2)
-            top: var(--smallMargin)
-
-            ~ *
-                margin-left: var(--smallMargin)
+    [data-position="moveRight"] .imageIcon
+        left: calc(100% - (var(--iconSize) / 2))
+        top: var(--smallMargin)
+    
+    .afterIconColumn
+        padding-left: calc(var(--paddingLeft) + (var(--iconSize) / 2))

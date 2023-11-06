@@ -30,7 +30,6 @@ h2,
 h4,
 h5,
 h6,
-p,
 .wp-block-columns,
 figure,
 blockquote,
@@ -89,7 +88,8 @@ blockquote,
     --ankerHeight: calc(var(--fontSize) + 40px)
     margin-top: var(--fontSize)
 
-#body .mb-fontMargin
+#body .mb-fontMargin,
+h1 + h2:not([class*="mb-"])
     margin-bottom: var(--fontSize)
 
 #body .mt-fontMarginHalf,
@@ -105,7 +105,7 @@ h1 + h2:not([class*="mt-"])
         &:not([class*="mb-"]):not(:last-child)
             margin-bottom: var(--fontSize)
     h3,
-    h2
+    h2:not(h1 + h2)
         &:not([class*="mb-"])
             margin-bottom: calc(var(--fontSize) / 2)
 
@@ -133,8 +133,7 @@ article > .wp-block-button
 .sidePadding,
 .single-content > .wp-block-image,
 .single-content > .wp-block-video,
-.single-content > .aundo-slider,
-.smallColumns:not(.slide)
+.single-content > .aundo-slider
     width: 100% 
 
 // .content > h1,
@@ -154,14 +153,14 @@ article > .wp-block-button
 .content > ul,
 .content > ol,
 // .content > .wp-block-columns,
+// .content > .wp-block-columns,
 .content > .wp-block-query,
 .content > .wp-block-quote,
 .content > .wp-block-group > .wp-block-group__inner-container,
 .sidePadding,
 .single-content > .wp-block-image,
 .single-content > .wp-block-video,
-.single-content > .aundo-slider,
-.smallColumns:not(.slide)
+.single-content > .aundo-slider
     &:not(.spacer-on)
         padding-left: var(--sidePadding)
         padding-right: var(--sidePadding)
@@ -170,14 +169,41 @@ article > .wp-block-button
 
 // #body .content > .wp-block-columns > .wp-block-column
 //     flex-grow: 0
-@media only screen and (min-width: 782px)
-    .content > .wp-block-columns > .wp-block-column:first-child:not(.padding-edge)
-        margin-left: var(--sidePadding)
-        box-sizing: border-box
+@media only screen and (max-width: 781px)
+    .content > .wp-block-columns,
+    .content > .spaltenIcon > .wp-block-columns 
+        > .wp-block-column:not([class*="bg-"]) 
+            > p,
+            > h2,
+            > h3,
+            > h4,
+            > h5,
+            > h6
+                padding-left: var(--sidePadding)
+                padding-right: var(--sidePadding)
+                box-sizing: border-box
 
-    .content > .wp-block-columns > .wp-block-column:last-child:not(.padding-edge)
-        margin-right: var(--sidePadding)
-        box-sizing: border-box
+        // &:first-child
+        //     margin-bottom: var(--smallMargin)
+
+    .content > .wp-block-columns,
+    .content > .spaltenIcon > .wp-block-columns 
+        .wp-block-column.padding-edge
+            margin-left: var(--sidePadding)
+            box-sizing: border-box
+
+@media only screen and (min-width: 782px)
+    .content > .wp-block-columns,
+    .content > .spaltenIcon > .wp-block-columns 
+        > .wp-block-column:first-child:not(.padding-edge)
+            margin-left: var(--sidePadding)
+            box-sizing: border-box
+
+    .content > .wp-block-columns,
+    .content > .spaltenIcon > .wp-block-columns 
+        > .wp-block-column:last-child:not(.padding-edge)
+            margin-right: var(--sidePadding)
+            box-sizing: border-box
 
 // .content > *,
 .single-content > *,
@@ -188,8 +214,12 @@ article > .wp-block-button
     margin-right: auto
 
 .maxSmall,
-.content p:not(.fullwidth)
-    max-width: 45rem
+.content p:not(.fullwidth):not([class*="font-"])
+    max-width: 56rem
+.content > p:not(.fullwidth):not([class*="font-"]),
+.content > ul:not(.fullwidth)
+    margin-left: auto
+    margin-right: auto
 
 .maxWide,
 .smallColumns,

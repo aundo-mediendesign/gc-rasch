@@ -5,8 +5,10 @@
 
 .customStyles
     @import _fonts
-    .fontPrev
-        font-size: 13px !important
+    .fontPrev 
+        font-size: calc(var(--fontSize) * .8)
+        &.font-headline1
+            font-size: calc(var(--fontSize) * .6)
 
     .font-hero
         margin: 0
@@ -24,11 +26,14 @@
         @import _fonts
         @import _margins
 
+        *
+            text-transform: none !important
+
         .edit,
         button 
             font-weight: 300
-        .edit > p 
-            margin-bottom: 0.2rem !important
+        .edit p 
+            margin-bottom: var(--fontSize) !important
        
         .is-root-container > *:not(.window),
         h1
@@ -47,13 +52,23 @@
 
         input
             font-size: 1rem !important
-        .font-boldBig
-            font-size: calc(var(--fontSize) * .9)
-        .font-base
-            font-size: calc(var(--fontSize) * .9)
-        .font-hero
-            font-size: calc(var(--fontSize) * .5)
 
+        .font-headline1,
+        h1,
+        .font-headline2,
+        h2,
+        .font-headline3,
+        h3,
+        .font-headline4,
+        h4, h5, h6,
+        .wp-block-button__link
+            font-size: calc(var(--fontSize) * .6) !important
+
+        .wp-block-button__link
+            border-radius: 0
+
+            &:after
+                content: " >"
         .single-content p:not([class*=font-])
             font-size: 1.3rem
 

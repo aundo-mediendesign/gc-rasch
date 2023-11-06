@@ -17,32 +17,36 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import Edit from './edit';
+// import save from './save';
 import metadata from './block.json';
-
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 
-
  registerBlockType( metadata.name, {
-    supports: {
-        widget: true,
-    },
     attributes: {
-        image: { type: "string" },
-        imageCode: { type: "string" },
-        block: { type: "boolean", default: false},
-        overlap: { type: "boolean", default: false}
+        image: { type: 'string' },
+        imageId: { type: 'number' },
+        bgColor: { type: 'string' },
+        position: { type: 'string' },
+        stretch: { type: 'boolean', default: false }
     },
 	/**
 	 * @see ./edit.js
 	 */
 	edit: Edit,
-    save: function() {}
 	/**
 	 * @see ./save.js
 	 */
-	
+	save: (props) => {
+        const blockProps = useBlockProps.save();
+ 
+        return (
+            <InnerBlocks.Content />
+        );
+    },
 } );
+

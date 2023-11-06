@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import Header from './Header'
 import { useInView } from 'react-intersection-observer'
 const Slider = React.lazy(() => import (/* webpackChunkName: "Slider" */ './plugins/Slider'))
@@ -24,13 +24,6 @@ wp.element.render(
 
 if (document.querySelector('.wp-block-button')) {
     document.querySelectorAll('.wp-block-button').forEach(buttonWrapper => {
-        // var words = button.innerHTML.split(" ");
-
-        // var lastWord = words.pop();
-        // var allOtherWords = words.join(" ");
-
-        // button.innerHTML = allOtherWords + '<span style="white-space: nowrap">' + lastWord + ' <svg xmlns="http://www.w3.org/2000/svg" width="18.16" height="26.42" viewBox="0 0 18.16 26.42"><path d="m4.13,26.42L.01,22.05l9.39-8.85L0,4.37,4.11,0l14.05,13.2-14.03,13.22Z"/></svg></span>'
-        
         if (!buttonWrapper.classList.contains('button-noArrow')) {
             buttonWrapper.querySelectorAll('.wp-block-button__link').forEach(button => {
                 button.innerHTML = '<span>' + button.innerHTML + '</span><svg xmlns="http://www.w3.org/2000/svg" width="18.16" height="26.42" viewBox="0 0 18.16 26.42"><path d="m4.13,26.42L.01,22.05l9.39-8.85L0,4.37,4.11,0l14.05,13.2-14.03,13.22Z"/></svg>'
@@ -80,6 +73,8 @@ if (document.querySelector(".aundo-icons")) {
                 div.style.display = "inline-flex"
                 nextElement.prepend(div)
             }
+        } else if (div.classList.contains('overlap')) {
+            div.parentNode.style.marginTop = 'calc(var(--iconSize) / 2)'
         }
     })
 }
@@ -96,4 +91,39 @@ if (document.querySelector(".aundo-slider")) {
         <Suspense fallback={<span class="loading"></span>}><Slider props={props} useInView={useInView} parent={parent}/></Suspense>
         )
 }
+}
+if (document.querySelector('.iconImg')) {
+    document.querySelectorAll('.iconImg').forEach(imgParent => {
+        const position = imgParent.dataset.position
+        const icon = imgParent.querySelector('.imageIcon')
+        const img = imgParent.querySelector('img')
+
+        if (icon && img) {
+            img.parentNode.insertBefore(icon, img.nextSibling);
+            icon.style.display = ''
+        }
+        
+        if (imgParent.querySelector('figcaption')) {
+            imgParent.parentNode.insertBefore(imgParent.querySelector('figcaption'), imgParent.nextSibling);
+        }
+
+        if ((position == 'moveRight') && imgParent.closest('.wp-block-column')) {
+            let parentColumn = imgParent.closest('.wp-block-column')
+            if (parentColumn.nextElementSibling) {
+                parentColumn.nextElementSibling.style.setProperty('--paddingLeft', window.getComputedStyle(parentColumn.nextElementSibling).paddingLeft);
+                parentColumn.nextElementSibling.classList.add('afterIconColumn')
+            }
+        } /* else if (imgParent.nextElementSibling) {
+            imgParent.nextElementSibling.style.setProperty('--paddingLeft', window.getComputedStyle(imgParent.nextElementSibling).paddingLeft);
+            imgParent.nextElementSibling.style.setProperty('--paddingTop', window.getComputedStyle(imgParent.nextElementSibling).paddingTop);
+        } */
+    })
+}
+// aundo-accordion
+if (document.querySelector(".aundo-accordion")) {
+    import(/* webpackChunkName: "Accordion" */ './plugins/Accordion').then(frontend => { 
+        document.querySelectorAll('.aundo-accordion').forEach(acc => {
+            frontend.AccordionJs({acc})
+        })       
+    })
 }

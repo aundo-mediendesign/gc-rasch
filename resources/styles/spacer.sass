@@ -21,6 +21,7 @@
 p.spacer-on
     @include spacerOn
 
+.wp-block-group .spacer:not(.overlap),
 .wp-block-column .spacer:not(.overlap)
     margin-top: calc((var(--smallMargin) * -1 ) + (var(--fontSize) * -.5))
     margin-bottom: 1rem
@@ -105,5 +106,6 @@ p.spacer-on
         @include spacerOn-min550
 
 @media only screen and (min-width: 782px)
-    .wp-block-column .spacer
+    .wp-block-column .spacer,
+    .wp-block-group .spacer
         max-width: 30vw

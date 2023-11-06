@@ -12,12 +12,14 @@ import { registerBlockType } from '@wordpress/blocks';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+// import './style.sass';
 
 /**
  * Internal dependencies
  */
 import Edit from './edit';
 import metadata from './block.json';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -27,22 +29,32 @@ import metadata from './block.json';
 
 
  registerBlockType( metadata.name, {
-    supports: {
-        widget: true,
-    },
     attributes: {
-        image: { type: "string" },
-        imageCode: { type: "string" },
-        block: { type: "boolean", default: false},
-        overlap: { type: "boolean", default: false}
+        title: { type: "string", default: "" },
+        titleActive: { type: 'string' },
+        // longTitle: { type: "boolean", default: false },
+        titleType: { type: "string", default: "p"},
+        titleClass: { type: "string"},
+        headClass: { type: "string"},
+        contentClass: { type: "string"},
+        margin: { type: "number" },
+        imageCode: { type: 'string' },
+        image: { type: 'string' },
+        style: { type: 'number' }
     },
 	/**
 	 * @see ./edit.js
 	 */
-	edit: Edit,
-    save: function() {}
+     edit: Edit,
 	/**
 	 * @see ./save.js
 	 */
-	
+     save: (props) => {
+        const blockProps = useBlockProps.save();
+ 
+        return (
+            <InnerBlocks.Content />
+        );
+    },
 } );
+

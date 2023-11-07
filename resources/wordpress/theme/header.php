@@ -19,7 +19,7 @@
 </head>
 <div id="headerscript"></div>
 
-<body id="body" <?php body_class(); ?> style='font-family: "Raleway"; font-size: clamp(1.2rem, 1.9vw, 1.5rem); --windowHeight: 100vh' >
+<body id="body" <?php body_class(); ?> style='font-family: Raleway; font-size: clamp(1.2rem, 1.9vw, 1.5rem); --windowHeight: 100vh' >
     <header id="mainHead">
         <div data-status="closed" class="header sidePadding editMargin flex alignCenter ontop" >
             <div data-status="closed" class="navigation sidePadding">

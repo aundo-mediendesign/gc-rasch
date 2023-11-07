@@ -112,6 +112,9 @@ body
     overflow-x: hidden
     max-width: 100vw
 
+.content > *:not(.wp-block-cover):first-child
+    margin-top: var(--headerheight)
+    
 .content a
     &:not([class*="font-"])
         font-weight: $fw_bold
@@ -246,6 +249,8 @@ a
         align-self: end
         margin-bottom: calc(var(--fontSize) * -.5)
 
+.wp-block-columns .wp-block-columns
+    height: 100%
 
 @media only screen and (max-width: 781px)
     #body .hide767

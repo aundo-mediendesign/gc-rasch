@@ -26,14 +26,14 @@
     top: 100%
     // margin-top: clamp(1rem, 3vw, 3rem)
     margin-top: 1rem
-    display: flex
-    align-items: center
-    flex-wrap: wrap
-    gap: 1rem
     padding: 0
     will-change: transform, opacity
     transition: .3s transform ease, .3s opacity ease
-    max-width: 40rem
+    max-width: 25rem
+
+    li
+        float: right
+        margin-left: 1rem 
 
 // .sub-menu > li,
 .navigation li
@@ -56,7 +56,7 @@
         will-change: transform
         transform-origin: left
 
-    li a
+    li
         font-size: clamp(1rem, 1.7vw, 1.875rem)
         text-transform: none
         font-weight: 400
@@ -76,7 +76,6 @@
     transform: translateX(-200px)
     box-sizing: border-box
     display: flex
-    flex-direction: column
     justify-content: space-between
 
     .openIcon        
@@ -115,13 +114,19 @@
 
 @media only screen and (min-width: 820px)
     .navigation
+        flex-direction: row-reverse
         padding-top: var(--headerheight)
+
+        > div
+            width: 50%
+            &:last-child
+                align-self: flex-end
     #menu-main,
     #menu-main > li
         align-items: flex-end
     
     .sub-menu
-        justify-content: flex-end
+        justify-items: flex-end
 
 @media only screen and (max-width: 819px)
     #menu-main,
@@ -129,7 +134,8 @@
         align-items: center
     
     .navigation
+        flex-direction: column
         padding-top: var(--mediumMargin)
         padding-bottom: var(--mediumMargin)
     .sub-menu
-        justify-content: center
+        justify-items: center

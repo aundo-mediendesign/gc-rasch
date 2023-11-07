@@ -6,47 +6,30 @@ $green: rgb(24, 227, 152)
     margin: 0 !important
     max-width: 100%
 
-.wp-block-cover:not([class*="color-"]) *
-    color: #ffffff
-// aundo.de
-.wp-block-create-block-aundo-slider.flex .block-editor-block-list__layout
-    display: flex
-    flex-wrap: wrap
+// // General
+// .block-editor-block-inspector, 
+// .block-editor-block-inspector>div
+//     display: flex
+//     flex-direction: column-reverse
 
-// .aundo-accordion .block-editor-block-list__layout,
-.grid6 .block-editor-block-list__layout
-    display: flex
-    flex-wrap: wrap
+// .block-editor-block-inspector__advanced > div 
+//     flex-direction: column-reverse
+//     display: flex
 
-#editor .wp-block-quote figure
-    display: flex
-    align-items: center
-    justify-content: center
+// .interface-interface-skeleton__content
+//     z-index: 99999
+// .is-root-container > .wp-block .wp-block
+//     margin-left: 0
+//     margin-right: 0
+//     max-width: none
+// .is-root-container > .wp-block
+//     // max-width: 1000px
+//     margin-left: auto
+//     margin-right: auto
 
-    img
-        border-radius: 100%
+.is-root-container
+    margin-bottom: 10rem
 
-// General
-.block-editor-block-inspector, 
-.block-editor-block-inspector>div
-    display: flex
-    flex-direction: column-reverse
-
-.block-editor-block-inspector__advanced > div 
-    flex-direction: column-reverse
-    display: flex
-
-.interface-interface-skeleton__content
-    z-index: 99999
-.is-root-container > .wp-block .wp-block
-    margin-left: 0
-    margin-right: 0
-    max-width: none
-.is-root-container > .wp-block
-    max-width: 1000px
-    margin-left: auto
-    margin-right: auto
-        
 .window
     position: fixed
     width: 100%
@@ -97,7 +80,8 @@ $green: rgb(24, 227, 152)
         max-width: 500px
         min-width: fit-content
 
-div[data-title="Wiederverwendbarer Block"]
+div[data-title="Wiederverwendbarer Block"],
+[aria-label="Block: Vorlage"].is-reusable
     position: relative
 
     &:not(.has-child-selected)
@@ -127,10 +111,6 @@ div[data-title="Wiederverwendbarer Block"]
 
     .components-base-control__field 
         margin-bottom: 0
-
-.kachel.wp-block-column
-    padding: 1rem
-    background-size: cover
 
 button
     border-radius: 0
@@ -175,27 +155,6 @@ button
                 background: $green
                 color: #fff
 
-.animate
-    &:not(.has-child-selected) > * 
-        > *:not(:first-child)
-            display: none
-
-        > *:first-child
-            br
-                display: none
-
-    &.has-child-selected > * 
-        > *:before
-            display: block
-            font-size: 12px
-            font-weight: bold
-
-        > *:nth-child(1):before
-            content: 'Animation 1'
-        > *:nth-child(2):before
-            content: 'Animation 2'
-        > *:nth-child(3):before
-            content: 'Animation 3'
 
 // This Plugin
 .aundo-bloecke-window,
@@ -212,9 +171,6 @@ button
     > div > *
         margin-bottom: 1rem
 
-.wp-block-gallery figure:nth-child(n+4) 
-    display: none !important
-
 .parent-aundo,
 .window
     .components-checkbox-control .components-base-control__field
@@ -224,8 +180,6 @@ button
     .is-layout-flex
         > label 
             width: 30%
-    .showOnSelect
-        display: none
 
     input[type="text"]
         min-width: 300px
@@ -243,14 +197,3 @@ button
         font-weight: bold
         display: table
         cursor: pointer
-
-.is-selected,
-.has-child-selected
-    .showOnSelect
-        display: block
-
-.is-root-container
-    &.wp-block-post-content .hero
-        font-size: 2rem
-        margin-left: 0
-        line-height: 1.2

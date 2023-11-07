@@ -1,6 +1,8 @@
 @mixin spacerOn
-    width: 100vw
+    width: var(--windowWidth)
     line-height: 1
+    max-width: var(--windowWidth)
+    overflow: hidden
     
     span 
         &.content
@@ -57,10 +59,11 @@ p.spacer-on
         position: absolute
 
 .padding-edge .spacer.overlap:last-child
-    margin-bottom: calc((var(--fontSize) * -.5) - var(--smallMargin))
+    margin-bottom: 0
+    bottom: calc(var(--fontSize)*-.5 - var(--smallMargin))
 
-
-#body .content > *:last-child:not([class*="mb-"])
+#body .content > .wp-block-cover:last-child:not([class*="mb-"]),
+#body .content > *[class*="bg-"]:last-child:not([class*="mb-"])
     margin-bottom: calc((clamp(3.2rem, 5vw, 5rem) * -.5) )
 
 @media only screen and (max-width: 549px)
@@ -82,7 +85,7 @@ p.spacer-on
         justify-content: space-between
         align-items: center
         position: relative
-        left: var(--fontSize)
+        // left: var(--fontSize)
 
         span 
             &.content

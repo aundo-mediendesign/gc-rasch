@@ -1,41 +1,34 @@
+// 2.0
 import { useState, useEffect } from 'react'
 import { useScrollDirection } from 'react-use-scroll-direction'
+
 // Header aundo
 function Header() {
     const headerRef = document.querySelector(".header")
     const burger = document.querySelector(".burger")
     const parents = document.querySelectorAll(".menu-item-has-children")
-    const colorSwitchIcons = document.querySelectorAll(".colorSwitch_icon")
     const [navStatus, setNavStatus] = useState("closed")
-    const [switchColors, setColors] = useState(false)
     const [size, setSize] = useState()
     const [headerStatus, setHeaderStatus] = useState('ontop')
     headerRef.dataset.status = navStatus
 
-    if (!switchColors) {
-        if (localStorage.getItem("colors")) {
-            document.querySelector("#body").classList.remove('lightmode')
-            document.querySelector("#body").classList.add(localStorage.getItem("colors"))
-            setColors(localStorage.getItem("colors"))
-        }
-    }
-    
     const openNav = (e) => {
         if (e !== 'escapekey') {
             if (e.target.closest(".header").dataset.status == "open") {
                 setNavStatus("closed")
                 document.querySelector("body").style.overflow = ""
+                // document.querySelector("body").style.maxHeight = ""
             }
             else {
                 setNavStatus("open")
                 document.querySelector("body").style.overflow = "hidden"
-                document.querySelector("body").style.maxHeight = "var(--windowHeight)"
+                // document.querySelector("body").style.maxHeight = "var(--windowHeight)"
             }
         }
         else {
             setNavStatus("closed")
             document.querySelector("body").style.overflow = ""
-            document.querySelector("body").style.maxHeight = ""
+            // document.querySelector("body").style.maxHeight = ""
         }
     }
 
@@ -45,46 +38,6 @@ function Header() {
         isScrollingDown,
     } = useScrollDirection()
 
-    const changeColors = () => {
-        if (document.querySelector("#body").classList.contains("darkmode")) {
-            document.querySelector("#body").classList.remove("darkmode")
-            document.querySelector("#body").classList.add("lightmode")
-            setColors("lightmode")
-            localStorage.setItem("colors", "lightmode")
-            document.cookie = "colors=lightmode"
-        }
-        else {
-            document.querySelector("#body").classList.remove("lightmode")
-            document.querySelector("#body").classList.add("darkmode")
-            setColors("darkmode")
-            localStorage.setItem("colors", "darkmode")
-            document.cookie = "colors=darkmode"
-        }
-        document.querySelector("#body").classList.remove("lightmodePreview")
-        document.querySelector("#body").classList.add("darkmodePreview")
-        hidePreview()
-    }
-
-    const showPreview = () => {
-        document.querySelector("#body").classList.add('transition')
-        if (document.querySelector("#body").classList.contains("darkmode")) {
-            document.querySelector("#body").classList.remove("darkmodePreview")
-            document.querySelector("#body").classList.add("lightmodePreview")
-            showHeader()
-        }
-        else {
-            document.querySelector("#body").classList.remove("lightmodePreview")
-            document.querySelector("#body").classList.add("darkmodePreview")
-            showHeader()
-        }
-    }
-
-    const hidePreview = () => {
-        document.querySelector("#body").classList.add('transition')
-        document.querySelector("#body").classList.remove("darkmodePreview")
-        document.querySelector("#body").classList.remove("lightmodePreview")
-        showHeader()
-    }
 
     const hideHeader = () => {
         headerRef.classList.add("hidden")
@@ -100,27 +53,38 @@ function Header() {
         }
         headerRef.classList.add("visible")
     }
+
+    const [scrollY, setScrollY] = useState(0);
+
+    const handleScroll = () => {
+        setScrollY(window.scrollY);
+    };
+    
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+    
+        // Clean-up-Funktion, um den Event-Listener zu entfernen
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     const checkScrollDirection = () => {
         if (isScrolling) {
-            // if ((window.scrollY < 100) && (headerStatus !== 'ontop')) {
-            //     setHeaderStatus('ontop')
-            //     showHeader(true)
-            // }
-            
-            if (isScrollingUp && (window.scrollY >= 100) && (headerStatus !== 'show')) {
+            if ((scrollY < 100) && (headerStatus !== 'ontop') && !disableShowHeader) {
+                setHeaderStatus('ontop')
+                showHeader(true)
+            }
+            else if (isScrollingUp && (scrollY >= 100) && (headerStatus !== 'show') && (headerStatus !== 'ontop') && !disableShowHeader) {
                 setHeaderStatus('show')
                 showHeader()
             }
             // checkScrollDown()
-            if (isScrollingDown && (navStatus !== "open") && (window.scrollY !== 0) && (headerStatus !== 'hide')) {
+            if (isScrollingDown && (navStatus !== "open") && (scrollY !== 0) && (headerStatus !== 'hide') && !disableShowHeader) {
                 setHeaderStatus('hide')
                 hideHeader()
             }
-        } else if ((!isScrolling) && (window.scrollY < 100)) {
-            setHeaderStatus('ontop')
-            showHeader(true)
         }
-    }
+    } 
 
     function handleEscapeKey(evt) {
         if (evt.key === 'Escape') {
@@ -140,23 +104,7 @@ function Header() {
         document.querySelector("body").style.setProperty('--windowWidth', document.documentElement.clientWidth + 'px');
     }
     
-    function removeEventListeners() {
-        colorSwitchIcons.forEach((icon) => {
-          icon.removeEventListener("click", changeColors);
-          icon.removeEventListener("mouseenter", showPreview);
-          icon.removeEventListener("mouseleave", hidePreview);
-        });
-    
-        document.removeEventListener("keydown", handleKeyDown);
-    
-        burger.removeEventListener("click", handleClick);
-    }
     function setupListeners() {
-        colorSwitchIcons.forEach(icon => {
-            icon.addEventListener("click", changeColors);
-            icon.addEventListener("mouseenter", showPreview);
-            icon.addEventListener("mouseleave", hidePreview);
-        })
         document.addEventListener('keydown', handleEscapeKey);
         burger.addEventListener("click", handleBurgerClick);
         parents.forEach(setInitialMenuState);
@@ -164,28 +112,50 @@ function Header() {
     }
     
     const [disableShowHeader, setDisableShowHeader] = useState(false)
-
-    useEffect(() => {            
-        const disableHeader = () => {
+  
+    const mainElement = document.querySelector('main.main')      
+    useEffect(() => {   
+        const disableHeader = (e) => {
+            console.log('clickHideHeader disableHeader')
             setDisableShowHeader(true)
+            if (navStatus !== "open") {
+                setHeaderStatus('hide')
+                hideHeader()
+            }
+        }
+        const enableHeader = (e) => {
+            console.log('clickHideHeader enableHeader')
             setTimeout(() => {
                 setDisableShowHeader(false)
             }, 1500)
+        }    
+        const clickHideHeader = () => {
+            console.log('clickHideHeader')
+            disableHeader()
+            enableHeader()
         }
-        if (!disableShowHeader) {
-            checkScrollDirection()
-            document.addEventListener('click', disableHeader)
-        } 
+        const touchHideHeader = (e) => {
+            if (e.target.closest('.aundo-slider')) {
+                console.log('touch hide header')
+                disableHeader()
+            } else {
+                enableHeader()
+            }
+        }
+        checkScrollDirection()
+        mainElement.addEventListener('click', clickHideHeader)
+
+        // Touchmove auf Slider
+        mainElement.addEventListener('touchstart', (e) => touchHideHeader(e), {passive: true})
+        
         return () => {
-            document.removeEventListener('click', disableHeader)
+            mainElement.removeEventListener('click', clickHideHeader)
+            mainElement.removeEventListener('touchstart', (e) => touchHideHeader(e), {passive: true})
         }
-    }, [isScrolling, window.scrollY, navStatus, headerStatus, disableShowHeader])  
+    }, [scrollY, navStatus, headerStatus, disableShowHeader])  
     
     useEffect(() => {
         setupListeners()
-        return () => {
-            removeEventListeners()
-        }
     }, [])
 
     useEffect(() => {
@@ -211,26 +181,8 @@ function Header() {
         const mouseleaveHandler = (e) => openClose(e)
         const clickHandler = (e) => openClose(e, "click")
 
-        // if (size > 819) {
-        //     parents.forEach(parent => {
-        //         parent.dataset.status = "open"
-        //         parent.removeEventListener("click", clickHandler)
-        //         // parent.addEventListener("mouseenter", mouseenterHandler)
-        //         // parent.addEventListener("mouseleave", mouseleaveHandler)
-        //     })
-        //     // return () => {
-        //     //     parents.forEach((parent) => {
-        //     //         parent.removeEventListener("mouseenter", mouseenterHandler);
-        //     //         parent.removeEventListener("mouseleave", mouseleaveHandler);
-        //     //     })
-        //     // }
-        // }
-        // if (size <= 819) {
-        // }
         parents.forEach(parent => {
             parent.dataset.status = "open"
-            // parent.removeEventListener("mouseenter", mouseenterHandler)
-            // parent.removeEventListener("mouseleave", mouseleaveHandler)
             parent.addEventListener("click", clickHandler)
         })
         return () => {

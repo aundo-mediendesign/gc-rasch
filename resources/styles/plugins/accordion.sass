@@ -11,13 +11,27 @@ html[data-ready="true"]
         will-change: max-height, opacity
         transition: .5s max-height ease, .5s opacity ease
 
+.font-base .aundo-accordion
+    svg
+        top: 0
+    .accHead p, h2, h3, h4, h5, h6
+        @include base()
+.font-base .aundo-accordion[data-active="true"] 
+    .accHead p, h2, h3, h4, h5, h6
+        font-weight: $fw_bold
+
+.color-schwarz .accHead 
+    p
+        color: var(--schwarz)
+    .openicon
+        color: var(--orange)
 
 .aundo-accordion
     --size: clamp(48px, 4.4vw, 60px)
 
     &[data-active="true"]
         .accContent
-            max-height: 1000px
+            max-height: var(--maxHeight)
             opacity: 1
 
         .titleClosed

@@ -57,6 +57,35 @@ if (document.querySelector('.spacer-on')) {
         }
     })
 }
+if (document.querySelector("ol") || document.querySelector("ul")) { 
+    const editList = (parent) => {
+        if (parent.getAttribute('start')) {
+            const startValue = parseInt(parent.getAttribute('start'), 10)
+            parent.style.counterReset = `li ${startValue - 1}`
+        }
+        parent.querySelectorAll('li').forEach( listItem => {    
+            const containsBrTag = listItem.querySelector('br') !== null
+
+            if (containsBrTag) {
+                listItem.classList.add('splittedLi')
+                const htmlContent = listItem.innerHTML
+                const sections = htmlContent.split('<br>')
+                const updatedContent = sections.map(section => `<span>${section.trim()}</span>`).join('<br>')
+                listItem.innerHTML = updatedContent;
+            }
+        })
+    }
+    if (document.querySelector("ol")) {
+        document.querySelectorAll('ol').forEach(ol => {
+            editList(ol)
+        })
+    }
+    if (document.querySelector("ul")) {
+        document.querySelectorAll('ul').forEach(ul => {
+            editList(ul)
+        })
+    }
+}
 
 // Gutenberg-Plugins
 // aundo-icons

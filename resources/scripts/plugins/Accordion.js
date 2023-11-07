@@ -1,42 +1,36 @@
 export function AccordionJs({acc}) {
-    const accordionContainer = acc
+    let firstOpen = true
+
+    function isInViewport(element) {
+        const bounding = element.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
     const showHideContent = (e) => {
-        let y
-        if (accordionContainer.dataset.active == "true") {
-            accordionContainer.dataset.active = "false"
-            // if (acc.previousElementSibling) {
-            //     y = acc.previousElementSibling.getBoundingClientRect().top + window.pageYOffset;
-            // } else {
-            //     y = acc.getBoundingClientRect().top + window.pageYOffset;
-            // }
-            // window.scrollTo({top: y})
-            // setTimeout(() => {
-            //     accordionContainer.dataset.active = "false"
-            // }, 300)
-        }
-        else {
-            accordionContainer.dataset.active = "true"
-            // if(document.querySelector('.aundo-accordion[data-active="true"]')) {
-            //     document.querySelector('.aundo-accordion[data-active="true"]').dataset.active = 'false'
-            //     setTimeout(() => {
-            //         y = accordionContainer.getBoundingClientRect().top + window.pageYOffset;
-            //         window.scrollTo({top: y})
-            //         accordionContainer.dataset.active = "true"
-            //     }, 500)
-                
-            // } else {
-            //     accordionContainer.dataset.active = "true"
-            // }
-            // accordionContainer.dataset.active = "true"
+        if (acc.dataset.active == "true") {
+            acc.dataset.active = "false"
+        } else {
+            if (document.querySelector('.aundo-accordion[data-active="true"]')) {
+                document.querySelector('.aundo-accordion[data-active="true"]').dataset.active = "false"
+
+                setTimeout(() => {
+                    if (!isInViewport(acc)) {
+                        acc.scrollIntoView()
+                    }
+                }, 600 )
+            }
+            acc.dataset.active = "true"
         }
     }
     const onClickOutside = (target) => {
         if (
             !target.closest('.aundo-accordion')    
         ) {
-            setTimeout(() => {
-                accordionContainer.dataset.active = "false"
-            }, 10)
+            acc.dataset.active = "false"
             document.removeEventListener("click", onClickOutside)
         }
     }
@@ -50,7 +44,21 @@ export function AccordionJs({acc}) {
         document.addEventListener("click", (e) => onClickOutside(e.target))
     })
 
+    const changeMaxHeightToContentHeight = (event) => {
+        if ((acc.dataset.active == 'true') && firstOpen) {
+            acc.querySelector('.accContent').style.maxHeight = '100%'
+            acc.style.setProperty('--maxHeight', acc.querySelector('.accContent').offsetHeight + 'px')
+            acc.querySelector('.accContent').style.maxHeight = ''
+            firstOpen = false
+            event.target.removeEventListener('transitionend', changeMaxHeightToContentHeight)
+        }
+    }
+
+    acc.querySelector('.accContent').addEventListener('transitionend', changeMaxHeightToContentHeight)
+
     if (acc.closest(".wp-block-columns")) {
         acc.closest(".wp-block-columns").classList.add("accColumns")
     }
+
+
 }

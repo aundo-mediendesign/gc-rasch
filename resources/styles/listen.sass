@@ -4,8 +4,13 @@ ol
     margin: 0
     list-style-type: none
 
-.content ul,
-.content ol
+.content ol,
+.content ul
+    li
+        &:not(:last-child):not([class*="mb-"])
+            margin-bottom: var(--fontSize)
+            
+.content ul
     &:not([class*="list-"]) li
         padding-left: 30px
         position: relative
@@ -22,6 +27,7 @@ ol
     
     &.list-check li
         display: flex
+        align-items: flex-start
 
         path
             fill: var(--orange)
@@ -29,13 +35,12 @@ ol
         .check
             display: flex
             align-items: center
-            width: 25px
-            height: calc(var(--fontSize) * 1.5)
             margin-right: 5px
+            height: calc(var(--fontSize) * 1.5)
 
         svg
-            width: 90%
-            height: auto
+            width: var(--fontSize)
+            height: var(--fontSize)
         
     li
         &:before
@@ -45,7 +50,6 @@ ol
         padding-left: 15%
 
 ol
-
     li
         counter-increment: li
 

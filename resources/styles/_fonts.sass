@@ -119,7 +119,11 @@ h6:not([class*="font-"]),
 .wp-block-button:not([class*="font-"]),
 .accHead:not([class*="font-"]),
 figcaption:not([class*="font-"]),
-cite
+cite,
+ul:not([class*="font-"]) .splittedLi:not([class*="font-"]) span:first-child,
+ul:not([class*="font-"]) .splittedLi:not([class*="font-"]):before,
+ol:not([class*="font-"]) .splittedLi:not([class*="font-"]) span:first-child,
+ol:not([class*="font-"]) .splittedLi:not([class*="font-"]):before
     @include headline_4
 cite
     font-style: normal

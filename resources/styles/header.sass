@@ -11,6 +11,10 @@ html[data-ready="true"] .header
 .custom-logo-link 
     display: flex
 
+@for $i from 1 through 6 
+    h#{$i}
+        hyphens: auto
+
 .header
     height: var(--headerheight)
     z-index: 9999
@@ -31,6 +35,11 @@ html[data-ready="true"] .header
     height: var(--headerheight)
 
 @media only screen and (max-width: 819px)
+    header
+        position: absolute
+        width: 100%
+        z-index: 99
+
     .header
         justify-content: center
         // &[data-status="open"] 
@@ -55,8 +64,9 @@ html[data-ready="true"] .header
     .header 
         pointer-events: all
         justify-content: space-between
+        
         &:not(.ontop)
-            background-color: var(--weiss)
+            background-color: var(--schwarz)
 
         &.hidden
             transform: translateY(-100%)

@@ -31,10 +31,6 @@
     transition: .3s transform ease, .3s opacity ease
     max-width: 25rem
 
-    li
-        float: right
-        margin-left: 1rem 
-
 // .sub-menu > li,
 .navigation li
     color: var(--weiss)
@@ -128,6 +124,10 @@
     .sub-menu
         justify-items: flex-end
 
+        li
+            float: right
+            margin-left: 1rem 
+
 @media only screen and (max-width: 819px)
     #menu-main,
     #menu-main > li
@@ -138,4 +138,8 @@
         padding-top: var(--mediumMargin)
         padding-bottom: var(--mediumMargin)
     .sub-menu
-        justify-items: center
+        display: flex
+        flex-wrap: wrap
+        align-content: center
+        justify-content: space-around
+        gap: 1rem

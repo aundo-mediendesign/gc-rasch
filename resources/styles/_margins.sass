@@ -192,7 +192,10 @@ article > .wp-block-button
             > h3,
             > h4,
             > h5,
-            > h6
+            > h6,
+            > .aundo-accordion,
+            > ul,
+            > ol
                 padding-left: var(--sidePadding)
                 padding-right: var(--sidePadding)
                 box-sizing: border-box
@@ -258,7 +261,7 @@ textarea
     gap: 2vw
 
 .gap-klein
-    gap: 1.1vw
+    gap: clamp(1rem, 1.1vw, 10rem)
 
 .gap-aus
     gap: 0

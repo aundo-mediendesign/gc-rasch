@@ -7,6 +7,7 @@
 @import Buttons
 @import gravityForms
 @import cover
+@import kenburns
 @import plugins/icons
 @import plugins/slider
 @import plugins/accordion
@@ -258,6 +259,12 @@ a
 
     .wp-block-columns:not([class*="column-"])
         flex-direction: column
+
+    #kontakt .is-content-justification-left + div,
+    #kontakt2 .is-content-justification-left + div,
+    #body .is-content-justification-left
+        justify-content: center
+        text-align: center
 
             
 @media only screen and (max-width: 980px)

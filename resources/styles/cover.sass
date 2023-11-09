@@ -12,6 +12,7 @@
 
 .content > .wp-block-cover:first-child 
     min-height: var(--windowHeight)
+    padding-top: var(--headerheight)
 @media only screen and (min-width: 820px)
     .content > .wp-block-cover:first-child 
         .spacer
@@ -25,9 +26,11 @@
 @media only screen and (max-width: 819px)
     .content > .wp-block-cover:first-child
         .wp-block-group:first-child
+            padding-bottom: var(--mediumMargin)
             align-items: center 
             justify-content: center 
-            height: calc(var(--windowHeight) - var(--mobileBurgerSize) - var(--headerheight) - var(--burgerMargin))
+            min-height: calc(var(--windowHeight) - var(--mobileBurgerSize) - var(--headerheight) - var(--burgerMargin))
+            text-align: center
         
         .bg-schwarz
             padding-top: var(--mobileBurgerSize)

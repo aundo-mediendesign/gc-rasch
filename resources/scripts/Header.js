@@ -146,11 +146,12 @@ function Header() {
         mainElement.addEventListener('click', clickHideHeader)
 
         // Touchmove auf Slider
-        mainElement.addEventListener('touchstart', (e) => touchHideHeader(e), {passive: true})
+        // mainElement.addEventListener('touchstart', (e) => touchHideHeader(e), {passive: true})
+        mainElement.addEventListener('touchstart', touchHideHeader)
         
         return () => {
             mainElement.removeEventListener('click', clickHideHeader)
-            mainElement.removeEventListener('touchstart', (e) => touchHideHeader(e), {passive: true})
+            mainElement.removeEventListener('touchstart', touchHideHeader)
         }
     }, [scrollY, navStatus, headerStatus, disableShowHeader])  
     

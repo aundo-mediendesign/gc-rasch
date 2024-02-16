@@ -49,9 +49,9 @@ class iconimg {
             $stretch = $attributes["stretch"] ? 'true' : 'false';
             $modifiedSvgCode = preg_replace('/\sid="[^"]+"/', '', $svgCode);
             $modifiedSvgCode = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $svgCode);
-            $modifiedSvgCode = str_replace('<svg', '<svg role="presentation" style="display: none;" class="imageIcon aundo-icons blockIcon ' . $attributes['bgColor'] . ' "', $modifiedSvgCode);
+            $modifiedSvgCode = str_replace('<svg', '<svg role="presentation" style="display: none;" class="imageIcon aundo-icons blockIcon ' . $attributes['bgColor'] . ' ' . $attributes['className'] . '"', $modifiedSvgCode);
             
-            echo '<div class="iconImg ' . $attributes['className'] . '" data-position="' . $position . '" data-stretch="' . $stretch . '" >';
+            echo '<div class="iconImg" data-position="' . $position . '" data-stretch="' . $stretch . '" >';
             echo $modifiedSvgCode;
             echo $content;
             echo '</div>';

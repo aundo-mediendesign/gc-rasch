@@ -38,18 +38,18 @@ class iconimg {
     function theHTML($attributes, $content) {  
         ob_start(); 
         
-        $attachmentId = $attributes['imageId'];
+        $attachmentId = isset($attributes['imageId']) ? $attributes['imageId'] : '';
         $attachment = get_post($attachmentId);
-        $position = $attributes['position'] ? $attributes['position'] : 'moveRight';
-        $stretch = $attributes['stretch'] ? 'false' : 'true';
+        $position = isset($attributes['position']) ? $attributes['position'] : 'moveRight';
+        $stretch = isset($attributes['stretch']) ? 'false' : 'true';
         
         if ($attachment && 'image/svg+xml' === $attachment->post_mime_type) {
             $imagePath = get_attached_file($attachmentId);
             $svgCode = file_get_contents($imagePath);
-            $stretch = $attributes["stretch"] ? 'true' : 'false';
+            $stretch = (isset($attributes["stretch"]) && $attributes["stretch"]) ? 'true' : 'false';
             $modifiedSvgCode = preg_replace('/\sid="[^"]+"/', '', $svgCode);
             $modifiedSvgCode = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $svgCode);
-            $modifiedSvgCode = str_replace('<svg', '<svg role="presentation" style="display: none;" class="imageIcon aundo-icons blockIcon ' . $attributes['bgColor'] . ' ' . $attributes['className'] . '"', $modifiedSvgCode);
+            $modifiedSvgCode = str_replace('<svg', '<svg role="presentation" style="display: none;" class="imageIcon aundo-icons blockIcon ' . (isset($attributes['bgColor']) ? $attributes['bgColor'] : '') . ' ' . (isset($attributes['className']) ? $attributes['className'] : '') . '"', $modifiedSvgCode);
             
             echo '<div class="iconImg" data-position="' . $position . '" data-stretch="' . $stretch . '" >';
             echo $modifiedSvgCode;

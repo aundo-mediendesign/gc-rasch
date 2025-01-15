@@ -39,13 +39,13 @@ class saveassvg {
         ob_start(); 
 
         $classList = "spacer";
-        if ($attributes['alignRight']) {
+        if (isset($attributes['alignRight']) && $attributes['alignRight']) {
             $classList .= " rightAlign";
         }
-        if ($attributes['className']) {
+        if (isset($attributes['className']) && $attributes['className']) {
             $classList .= " " . $attributes['className'];
         }
-        if (!$attributes['stopOverlap']) {
+        if (!isset($attributes['stopOverlap']) || !$attributes['stopOverlap']) {
             $classList .= " overlap";
         }
         echo '<span class="' . $classList . '"></span>';

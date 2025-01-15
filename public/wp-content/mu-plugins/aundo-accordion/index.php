@@ -39,19 +39,19 @@ class aundoaccordion {
         <div data-active="false" class="aundo-accordion <?php echo $attributes['className']; ?> " data-style="<?php echo $attributes['style']; ?>" style="--margin: <?php echo $attributes['margin']; ?>%" data-ref="accWrapRef">
             <div class="accHead <?php echo $attributes['headClass']; ?>" role="button">
                 <?php 
-                if ($attributes['titleType']) {
+                if (isset($attributes['titleType']) && $attributes['titleType']) {
                     echo '<' . $attributes['titleType'];
                 }
                 else {
                     echo '<p';
                 }
-                if (!$attributes['titleClass']) {
+                if (!isset($attributes['titleClass']) || !$attributes['titleClass']) {
                     echo ' class="mt-none mb-none font-mediumRegular">';
                 }
                 else {
                     echo ' class="' . $attributes['titleClass'] . '">';
                 }
-                if ($attributes['titleActive']) {
+                if (isset($attributes['titleActive']) && $attributes['titleActive']) {
                     echo '<span class="titleClosed">';
                     echo $attributes['title'];
                     echo '</span>';
@@ -62,14 +62,14 @@ class aundoaccordion {
                 else {
                     echo $attributes['title'];
                 }
-                if ($attributes['titleType']) {
+                if (isset($attributes['titleType']) && $attributes['titleType']) {
                     echo '</' . $attributes['titleType'] . '>';
                 }
                 else {
                     echo '</p>';
                 }
                 ?>
-                <?php if ($attributes['imageCode']) { ?>
+                <?php if (isset($attributes['imageCode']) && $attributes['imageCode']) { ?>
                     <img class="openicon" alt="accordion-icon" src=<?php echo $attributes['image']; ?> />
                 <?php } 
                 else { ?>

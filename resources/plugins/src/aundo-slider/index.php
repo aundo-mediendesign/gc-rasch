@@ -36,10 +36,10 @@ class aundoslider {
  
     function theHTML($attributes, $content) {  
         ob_start(); 
-        $content_style;
-        $child_content;
-        $child_content;
-        if ($attributes['child_content_active']) { 
+        $content_style = '';
+        $child_content = '';
+        $child_content = '';
+        if (isset($attributes['child_content_active']) && $attributes['child_content_active']) { 
             $dom = new DOMDocument();
             $dom->loadHTML($content);
             
@@ -95,7 +95,7 @@ class aundoslider {
                 $child_content .= $slide_template->saveHTML();
             }
         }
-        if (!$attributes['justmobile']) {
+        if (!isset($attributes['justmobile']) || !$attributes['justmobile']) {
             $content_style = 'display: none';
         }
         $animation_type = $attributes['animation'] ? $attributes['animation'] : 'scroll';
@@ -106,7 +106,7 @@ class aundoslider {
 
             <div style="<?php echo $content_style; ?>" class="sliderContent">
                 <?php 
-                if ($attributes['child_content_active']) {
+                if (isset($attributes['child_content_active']) && $attributes['child_content_active']) {
                     echo '<div class="wp-block-create-block-aundo-slider">' . $child_content . '</div>'; 
                 } else {
                     echo $content; 

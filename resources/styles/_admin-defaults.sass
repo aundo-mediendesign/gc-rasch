@@ -1,5 +1,8 @@
+@use '_admin-fonts' as fonts
+@use '_admin-margins' as margins
+
 .customStyles
-    @import _fonts
+    @include fonts.styles
     .fontPrev 
         font-size: calc(var(--fontSize) * .8)
         &.font-headline1
@@ -16,8 +19,8 @@
         --columnGap: 1rem
         --columnMargin: 1rem
         --sidePadding: 1rem
-        @import _fonts
-        @import _margins
+        @include fonts.styles
+        @include margins.styles
 
         *
             text-transform: none !important

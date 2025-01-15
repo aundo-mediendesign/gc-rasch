@@ -39,22 +39,22 @@ class aundoicons {
         ob_start(); 
         $class = '';
         $style = '';
-        if ($attributes["block"]) {
+        if (isset($attributes["block"]) && $attributes["block"]) {
             $class = 'blockIcon';
         } 
         else {
             $class = 'inlineIcon';
             $style = 'display: none';
         }
-        if ($attributes["className"]) {
+        if (isset($attributes["className"]) && $attributes["className"]) {
             $class .= ' ' . $attributes["className"];
         }
-        if ($attributes["overlap"]) {
+        if (isset($attributes["overlap"]) && $attributes["overlap"]) {
             $class .= ' overlap';
         }
         ?>
         <?php 
-        $attachmentId = $attributes['imageId'];
+        $attachmentId = isset($attributes['imageId']) ? $attributes['imageId'] : '';
 
         if (!$attachmentId) {
             // Backup für alte Plugin-Version
@@ -64,7 +64,6 @@ class aundoicons {
         if ($attachment && 'image/svg+xml' === $attachment->post_mime_type) {
             $imagePath = get_attached_file($attachmentId);
             $svgCode = file_get_contents($imagePath);
-            $stretch = $attributes["stretch"] ? 'true' : 'false';
             $modifiedSvgCode = preg_replace('/\sid="[^"]+"/', '', $svgCode);
             $modifiedSvgCode = str_replace(
             '<svg', '<svg 

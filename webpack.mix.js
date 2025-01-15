@@ -56,6 +56,17 @@
       ] , distPath +'/admin.css')
       // Copy theme files
       .webpackConfig({
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader'
+                    }
+                }
+            ]
+        },
         plugins: [
           new copy({
             patterns: [

@@ -1,0 +1,135 @@
+$font_1: 'Raleway', sans-serif
+$font_2: 'Akshar', sans-serif
+$fw_light: 300
+$fw_medium: 500
+$fw_bold: 700
+
+@mixin base()
+    --fontSize: clamp(1rem, 1.3vw, 1.5rem)
+    font-family: $font_1
+    font-weight: $fw_light
+    font-size: var(--fontSize)
+    line-height: 1.5
+    text-transform: none
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin headline_1()
+    --fontSize: clamp(2.5rem, 6vw, 6.9rem)
+    font-family: $font_2
+    font-weight: $fw_bold
+    font-size: var(--fontSize)
+    line-height: 1
+    text-transform: uppercase
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin headline_2()
+    --fontSize: clamp(1.8rem, 3.6vw, 4.2rem)
+    font-family: $font_2
+    font-weight: $fw_bold
+    font-size: var(--fontSize)
+    line-height: 1
+    text-transform: uppercase
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin headline_3()
+    --fontSize: clamp(1.8rem, 2.7vw, 3.2rem)
+    font-family: $font_2
+    font-weight: $fw_bold
+    font-size: var(--fontSize)
+    line-height: 1.3
+    text-transform: uppercase
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin headline_4()
+    --fontSize: clamp(1.25rem, 2.5vw, 2.1rem)
+    font-family: $font_2
+    font-weight: $fw_bold
+    font-size: var(--fontSize)
+    line-height: 1.4
+    text-transform: uppercase
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin subline()
+    --fontSize: clamp(1.25rem, 2.2vw, 2.5rem)
+    font-family: $font_1
+    font-weight: $fw_medium
+    font-size: var(--fontSize)
+    line-height: 1
+    text-transform: none
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+// @mixin button()
+//     --fontSize: clamp(1.25rem, 2.2vw, 2.5rem)
+//     font-family: $font_2
+//     font-weight: $fw_bold
+//     font-size: var(--fontSize)
+//     line-height: 1
+//     text-transform: uppercase
+//     -webkit-font-smoothing: auto
+//     -moz-osx-font-smoothing: auto
+
+@mixin benefits()
+    --fontSize: clamp(1rem, 1.7vw, 1.875rem)
+    font-family: $font_1
+    font-weight: $fw_medium
+    font-size: var(--fontSize)
+    line-height: 1
+    text-transform: none
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+
+@mixin styles
+    strong
+        font-weight: $fw_bold
+
+    body,
+    .font-base,
+    input[type="text"]:not([class*="font-"]),
+    input[type="email"]:not([class*="font-"]),
+    textarea:not([class*="font-"])
+        @include base()
+
+    .font-headline1,
+    h1:not([class*="font-"])
+        @include headline_1()
+        
+    .font-headline2,
+    h2:not([class*="font-"])
+        @include headline_2
+
+    .font-subline,
+    .content > .wp-block-cover:first-child h1 + *:not([class*="font-"]),
+    .content > .wp-block-cover:first-child .font-headline1 + *:not([class*="font-"])
+        @include subline
+
+    .font-headline3,
+    #menu-main > li
+        @include headline_3
+        
+    .font-headline4,
+    h3:not([class*="font-"]),
+    h4:not([class*="font-"]),
+    h5:not([class*="font-"]),
+    h6:not([class*="font-"]),
+    .wp-block-button:not([class*="font-"]),
+    .accHead:not([class*="font-"]),
+    figcaption:not([class*="font-"]),
+    cite,
+    ul:not([class*="font-"]) .splittedLi:not([class*="font-"]) span:first-child,
+    ul:not([class*="font-"]) .splittedLi:not([class*="font-"]):before,
+    ol:not([class*="font-"]) .splittedLi:not([class*="font-"]) span:first-child,
+    ol:not([class*="font-"]) .splittedLi:not([class*="font-"]):before
+        @include headline_4
+    cite
+        font-style: normal
+
+    .font-benefits
+        @include benefits
+
+
